@@ -23,3 +23,7 @@ body>.container-fluid {
   right: 0;
 }
 
+.jumbotron {
+  height: 350px;
+}
+
