@@ -52,27 +52,42 @@
           <section>
           <h3> Sucediendo hoy </h3>
 
-            <article ng:repeat="meetup_id in timeline">
-              <h4>{{events['ev_' + meetup_id].title}}</h4>
-              <date>{{events['ev_' + meetup_id].date | date}}</date>
+            <article ng:repeat="meetup in today">
+              <h4>{{meetup.title}}</h4>
+              <date>{{meetup.date | date}}</date>
               <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
             </article>
+            <div ng-if="today.length === 0" class="alert alert-info" role="alert">
+              No hay eventos para hoy.
+            </div>
 
           </section>
 
           <section>
           <h3> Eventos planificados </h3>
 
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <article ng:repeat="meetup in future">
+              <h4>{{meetup.title}}</h4>
+              <date>{{meetup.date | date}}</date>
+              <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            </article>
+            <div ng-if="future.length === 0" class="alert alert-info" role="alert">
+              No hay eventos para hoy.
+            </div>
   
           </section>
 
           <section>
           <h3> Eventos realizados </h3>
 
-            <h4>Subheading</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <article ng:repeat="meetup in past">
+              <h4>{{meetup.title}}</h4>
+              <date>{{meetup.date | date}}</date>
+              <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            </article>
+            <div ng-if="past.length === 0" class="alert alert-info" role="alert">
+              No hay eventos para hoy.
+            </div>
           </section>
 
         </div>
