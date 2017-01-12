@@ -49,14 +49,29 @@
 
       <div class="row marketing">
         <div class="col-lg-9">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <section>
+          <h3> Sucediendo hoy </h3>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </section>
+
+          <section>
+          <h3> Eventos planificados </h3>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+  
+          </section>
+
+          <section>
+          <h3> Eventos realizados </h3>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </section>
+
         </div>
 
         <div class="col-lg-3">
@@ -78,6 +93,72 @@
 
     <div class="container-fluid">
     </div>
+
+    <script type="javascript">
+      var data = {
+                   timeline : [
+                                // Events in Havana Jan 2017
+
+                                // Events in Santa Clara Jan 2017
+                                236654735, 236654854, 236654894,
+
+                                // Events in Holguin Dec 2016 
+                                236240224, 235953812, 236099298
+                                ],
+                   events: {ev_236099298: {title: 'CubanTech Meetup #1 - Docker Global Mentors Week en Holguín, Cuba',
+                                           source: 'dockercuba',
+                                           attendees: 15,
+                                           date: d = new Date(2016, 11, 24, 11, 0),
+                                           city: 'Holguín',
+                                           province: 'Holguín'
+                                            },
+                            ev_235953812: {title: 'CubanTech Meetup #2 - NodeSchool... NodeBots en Holguín, Cuba',
+                                           source: 'cubantech',
+                                           attendees: 12,
+                                           date: d = new Date(2016, 11, 24, 15, 0),
+                                           city: 'Holguín',
+                                           province: 'Holguín'
+                                            },
+                            ev_236099298: {title: 'CubanTech Meetup #3 - PyDay Navideño en Holguín, Cuba',
+                                           source: 'cubantech',
+                                           attendees: 22,
+                                           date: d = new Date(2016, 11, 25, 11, 0),
+                                           city: 'Holguín',
+                                           province: 'Holguín'
+                                            },
+                            ev_236099298: {title: 'CubanTech Meetup #4 - Docker Mentors Day en Santa Clara, Cuba',
+                                           source: 'dockercuba',
+                                           attendees: 0,
+                                           date: d = new Date(2017, 1, 21, 11, 0),
+                                           city: 'Santa Clara',
+                                           province: 'Villa Clara'
+                                            },
+                            ev_236099298: {title: 'CubanTech Meetup #5 - NodeSchool Santa Clara, Cuba. Taller de Angular.js v2.',
+                                           source: 'cubantech',
+                                           attendees: 0,
+                                           date: d = new Date(2017, 1, 21, 14, 0),
+                                           city: 'Santa Clara',
+                                           province: 'Villa Clara'
+                                            },
+                            ev_236099298: {title: '',
+                                           source: 'cubantech',
+                                           attendees: 22,
+                                           date: d = new Date(2017, 1, 22, 11, 0),
+                                           city: 'Santa Clara',
+                                           province: 'Villa Clara'
+                                            },
+                           },
+                   sources: {cubantech: {
+                                          name: 'CubanTech Meetups',
+                                          nickname: 'Technolgy Entrepreneurs'
+                                        },
+                             dockercuba: {
+                                          name: 'Docker Cuba',
+                                          nickname: 'Dockers'
+                                         }
+                             }
+                 }
+    </script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
