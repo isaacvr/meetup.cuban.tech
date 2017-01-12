@@ -1,0 +1,25 @@
+
+body {
+  background-attachment: fixed;
+  background-image: url('../img/f2.1.png');
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: top;
+  background-size: 700px;
+  padding-bottom: 200px;
+}
+
+body>.container-fluid {
+  background-attachment: fixed;
+  background-image: url('../img/f2.2.png');
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+  background-size: 700px;
+  height: 200px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
