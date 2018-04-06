@@ -1,0 +1,16 @@
+.flag {
+	width: 16px;
+	height: 11px;
+	background:url(../img/flags.png) no-repeat
+}
+
+.flag.flag-de {background-position: -16px 0}
+.flag.flag-es {background-position: -32px 0}
+.flag.flag-fr {background-position: 0 -11px}
+.flag.flag-gb {background-position: -16px -11px}
+.flag.flag-en {background-position: -16px -11px}
+.flag.flag-it {background-position: -32px -11px}
+.flag.flag-pt {background-position: 0 -22px}
+
+.navbar-nav .flag {display: inline-block}
+

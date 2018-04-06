@@ -1,0 +1,82 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  background-color: #ebebeb;
+  background-image: url('../img/bg.lb.png');
+  background-position: left bottom;
+  background-repeat: no-repeat;
+/*  padding-top: 50px; */
+  padding-bottom: 20px;
+}
+
+.ct-bgr {
+  background-image: url('../img/bg.r.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  min-height: 196px;
+  position: absolute;
+  right: 0px;
+}
+
+.jumbotron.jumbotron-dark {
+  background-color: #101010;
+}
+
+.tag-parent {
+  position: relative;
+}
+
+.tag {
+  background-position: center 0px;
+  background-repeat: no-repeat;
+  bottom: -26px;
+  height: 26px;
+  position: absolute;
+  width: 100%;
+}
+
+.tag-bottom {
+  background-image: url('../img/tri.down.png');
+}
+
+hr.tag-bottom {
+  background-image: url('../img/hr.png');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Italic';
+  src: url('TitilliumWeb-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Regular';
+  src: url('TitilliumWeb-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Teko-Light';
+  src: url('Teko-Light.ttf');
+}
+
+.coming-soon {
+  font-family: 'TitilliumWeb-Italic';
+  font-size: 1.5em;
+}
+
+.coming-soon input {
+  font-family: 'TitilliumWeb-Regular';
+}
+
+.coming-soon h2 {
+  font-family: 'Teko-Light';
+  font-size: 7.0em;
+}
+
+.text-coming {
+  color: #072d4f;
+}
+
+.text-soon {
+  color: #620E0E;
+}
+
+

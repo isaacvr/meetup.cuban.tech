@@ -1,0 +1,281 @@
+{
+  "head" : {
+    "metadata" : [
+      {
+        "name"    : "description",
+        "content" : "The Cuban Tech Group is a non-profit providing a foundation for open, collaborative technology development as well as promotion of use of technologic products and services; providing outreach and education to help more people access computing and technology making, especially among youth and underserved communities; creating an independent legal entity to which companies and individuals can donate resources and be assured that they will be used to develop the Cuban (private) technology ecosystem; providing means for Cuban entrepreneurs to know how to shelter their business from legal suits directed at technology development projects; protecting affiliated technology brands."
+      },
+      {
+        "name"    : "author",
+        "content" : "The Cuban Tech Group"
+      }
+    ],
+    "title"    : "The homepage of the Cuban Tech Group"
+  },
+  "navBar" : [
+    {
+      "label" : "Events",
+      "href" : "events"
+    },
+    {
+      "label" : "Who we are",
+      "href" : "aboutUs"
+    },
+    {
+      "label" : "contact us",
+      "href" : "contactUs"
+    }
+  ],
+  "carousel" : [
+    {
+      "imageUrl" : "img/1.jpg",
+      "alt" : "First slide",
+      "headline" : "Example headline.",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nobis quas, in est veniam. Veritatis obcaecati, officiis temporibus voluptatem illum nisi laudantium impedit cupiditate. Voluptate laborum perferendis tempora libero dicta.",
+      "class" : "active"
+    },
+    {
+      "imageUrl" : "img/2.jpg",
+      "alt" : "Second slide",
+      "headline" : "Another example headline.",
+      "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+      "class" : ""
+    },
+    {
+      "imageUrl" : "img/3.jpg",
+      "alt" : "Third slide",
+      "headline" : "One more for good measure.",
+      "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+      "class" : ""
+    },
+    {
+      "imageUrl" : "img/4.jpg",
+      "alt" : "Fourth slide",
+      "headline" : "This is a custom slide.",
+      "content" : "The only way that you can reach your dream is going to bed.",
+      "class" : ""
+    },
+    {
+      "imageUrl" : "img/5.jpg",
+      "alt" : "Fifth slide",
+      "headline" : "Quinto slide",
+      "content" : "HOLAAAAAA, este es un slide que acabo de crear ahora",
+      "class" : ""
+    }
+  ],
+  "contacts" : [
+    {
+      "code" : "blogger",
+      "href" : "https://blog.cuban.tech"
+    },
+    {
+      "code" : "twitter",
+      "href" : "https://twitter.com/TheCubanTech"
+    },
+    {
+      "code" : "fb",
+      "href" : "https://www.facebook.com/TheCubanTech"
+    },
+    {
+      "code" : "youtube",
+      "href" : "#"
+    }
+  ],
+  "marketing" : [
+    {
+      "icon" : "tech",
+      "label" : "Technology",
+      "content" : "Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.",
+      "btnLabel" : "View details"
+    },
+    {
+      "icon" : "edu",
+      "label" : "Education",
+      "content" : "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.",
+      "btnLabel" : "View details"
+    },
+    {
+      "icon" : "users",
+      "label" : "Community",
+      "content" : "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
+      "btnLabel" : "View details"
+    }
+  ],
+  "featurette" : [
+    {
+      "heading" : "First featurette heading.",
+      "headingMuted" : "It'll blow your mind.",
+      "content" : "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+      "direction" : "left",
+      "image" : "img/3.jpg"
+    },
+    {
+      "heading" : "Oh yeah, it's that good.",
+      "headingMuted" : "See for yourself.",
+      "content" : "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+      "direction" : "right",
+      "image" : "img/5.jpg"
+    },
+    {
+      "heading" : "And lastly, this one.",
+      "headingMuted" : "Checkmate.",
+      "content" : "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+      "direction" : "left",
+      "image" : "img/4.jpg"
+    }
+  ],
+  "footer" : [
+    {
+      "header" : "About",
+      "items" : [
+        [
+          {
+            "label" : "Overview",
+            "href" : "about.html"
+          },
+          {
+            "label" : "Sponsorship",
+            "href" : "sponsors.html"
+          },
+          {
+            "label" : "FAQ",
+            "href" : "faq.html"
+          },
+          {
+            "label" : "Contact Us",
+            "href" : "contact.html"
+          },
+          {
+            "label" : "Constitution",
+            "href" : "legal.html"
+          },
+          {
+            "label" : "Bylaws",
+            "href" : "bylaws.html"
+          },
+          {
+            "label" : "Privacy",
+            "href" : "privacy.html"
+          },
+          {
+            "label" : "Terms",
+            "href" : "tos.html"
+          }
+        ]
+      ]
+    },
+    {
+      "header" : "Support Us",
+      "items" : [
+        [
+          {
+            "label" : "Sponsorship",
+            "href" : "sponsors.html"
+          },
+          {
+            "label" : "Donations",
+            "href" : "donate.html"
+          },
+          {
+            "label" : "Buy Stuff",
+            "href" : "store.html"
+          },
+          {
+            "label" : "Thanks",
+            "href" : "thanks.html"
+          }
+        ]
+      ]
+    },
+    {
+      "header" : "Community",
+      "items" : [
+        [
+          {
+            "label" : "Meetups",
+            "href" : "events.html#meetups"
+          },
+          {
+            "label" : "Conferences",
+            "href" : "events.html#conf"
+          },
+          {
+            "label" : "Collaborations",
+            "href" : "events.html#collab"
+          }
+        ],
+        [
+          {
+            "label" : "Get Involved",
+            "href" : "participate.html"
+          },
+          {
+            "label" : "Code Of Conduct",
+            "href" : "coc.html"
+          }
+        ]
+      ]
+    }
+  ],
+  "signature"  : "The Cuban Tech Group. All rights reserved.",
+  "organigram" : {
+    "name"        : "Olemis Lang",
+    "title"       : "ceo",
+    "email"       : "olemis.lang@gmail.com",
+    "twitter"     : "olemislang",
+    "linkedin"    : "ololo",
+    "description" : "Python Software Foundation Member",
+    "avatar"      : "img/5.png",
+    "children" : [
+      {
+        "name"        : "Isaac Vega",
+        "title"       : "developer",
+        "email"       : "isaacvega1996@gmail.com",
+        "description" : "Beginner web developer",
+        "avatar"      : "img/9.png",
+        "children" : [
+          {
+            "name"     : "Annia Sahara",
+            "title"    : "asesora",
+            "email"    : "annia@gmail.com",
+            "twitter"  : "anniash",
+            "avatar"   : "img/6.png"
+          },
+          {
+            "name"     : "Carlos Perez",
+            "title"    : "dictador",
+            "email"    : "carlos@gmail.com",
+            "twitter"  : "carlosmpp",
+            "linkedin" : "cmanuelpp",
+            "avatar"   : "img/7.png"
+          }
+        ]
+      },
+      {
+        "name"        : "Mauricio Fuentes",
+        "title"       : "developer",
+        "email"       : "mauricio@yandex.com",
+        "twitter"     : "mauricioft",
+        "linkedin"    : "elmauri",
+        "avatar"      : "img/8.png",
+        "description" : "Desarrollador fullstack. Especializado en el diseño de plataformas basadas en UNIX. Fundador de MXS Solutions, miembro del grupo de desarrollo de Bootstrap en Twitter Inc.",
+        "children" : [
+          {
+            "name"   : "Pablo Salgado",
+            "title"  : "lavandero",
+            "avatar" : "img/4.png"
+          },
+          {
+            "name"   : "Sofia Puentes",
+            "title"  : "secretaria",
+            "avatar" : "img/10.png"
+          }
+        ]
+      }
+    ]
+  },
+  "general" : {
+    "language" : "Language",
+    "followUs" : "Follow us:"
+  }
+}
