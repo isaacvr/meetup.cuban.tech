@@ -16,6 +16,18 @@ myApp
 
       var ROUTE = 'translations/';
 
+      $scope.COLORS = [
+        "#ef5350",
+        "#4db6ac",
+        "#ff7043",
+        "#ffee58",
+        "#4fc3f7",
+        "#4caf50",
+        "#9575cd"
+      ];
+
+      $scope.location = $window.location;
+
       /// Lenguaje de preferencia
       $scope.preferedLanguage = 'en';
 
@@ -217,5 +229,101 @@ myApp
 
       };
 
+      $scope.createDataset = function createDataset(event) {
+
+        var data1 = event.data;
+        var data2 = data1.data;
+        var datasets = data2.datasets;
+
+        var maxCant = 0;
+
+        for (var i = 0; i < datasets.length; i += 1) {
+
+          maxCant = Math.max(maxCant, datasets[i].data.length);
+
+          if ( ['pie'].indexOf(data1.type) > -1 ) {
+            datasets[i].backgroundColor = $scope.COLORS;
+          } else {
+            datasets[i].borderColor = $scope.COLORS[0];
+            datasets[i].backgroundColor = $scope.COLORS[0] + '33';
+          }
+
+        }
+
+        if ( data2.hasOwnProperty('labels') === false ) {
+          data2.labels = ' '.repeat(maxCant - 1).split(' ');
+        }
+
+        var cnv = $window.document.querySelectorAll('canvas');
+
+        if ( cnv != null ) {
+          for (var i = 0; i < cnv.length; i += 1) {
+
+            //console.log(cnv[i].id, event.title);
+
+            if ( cnv[i].id === event.title ) {
+              event.chart = new Chart(cnv[i].getContext('2d'), event.data);
+              break;
+            }
+
+          }
+
+        }
+
+      };
+
+      $scope.getLevel = function getLevel(val, ini, fin, divs) {
+
+        return ~~( ((val - ini) * divs / (fin - ini) ) );
+
+      };
+
+      $scope.processEvent = function processEvent(event) {
+
+        //console.log(event);
+
+        var DESCRIPTORS = [
+          'fa fa-star-o',
+          'fa fa-star-half-o',
+          'fa fa-star',
+        ]
+
+        var part = Number(event.mean);
+        var total = Number(event.total);
+        var divs = 5;
+        var factor = total / divs;
+
+        var lv = $scope.getLevel(part, 0, total, divs);
+
+        event.rating = [ '', '', '', '', '' ];
+
+        for (var i = 0; i < lv; i += 1) {
+          event.rating[i] = DESCRIPTORS[ DESCRIPTORS.length - 1 ];
+        }
+
+        console.log(lv);
+
+        var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, DESCRIPTORS.length);
+
+        console.log(lv1);
+
+        event.rating[ lv ] = DESCRIPTORS[ lv1 ];
+
+        for (var i = lv + 1; i < divs; i += 1) {
+          event.rating[i] = DESCRIPTORS[ 0 ];
+        }
+
+        var cant = Number.parseInt(event.comments);
+
+        event.comments = cant + ' ' + $scope.general[( cant != 1 ) ? 'comments' : 'comment' ] + ' ';
+
+      };
+
     }
   ]);//*/
+
+///                    *** NON-ANGULAR STUFF ***
+
+(function() {
+  Chart.defaults.global.legend.labels.boxWidth = 12;
+})();

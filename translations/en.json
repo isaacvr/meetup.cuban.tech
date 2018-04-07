@@ -15,15 +15,15 @@
   "navBar" : [
     {
       "label" : "Events",
-      "href" : "events"
+      "href" : "/"
     },
     {
       "label" : "Who we are",
-      "href" : "aboutUs"
+      "href" : "/aboutUs"
     },
     {
       "label" : "contact us",
-      "href" : "contactUs"
+      "href" : "/contactUs"
     }
   ],
   "carousel" : [
@@ -124,97 +124,163 @@
       "image" : "img/4.jpg"
     }
   ],
+  "eventGroups" : [
+    {
+      "groupName" : "Sucediendo Hoy",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #1",
+          "mean" : "47.4",
+          "total" : "100",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque, voluptatibus, officia in quos eligendi enim soluta qui, at, provident officiis id animi illum perferendis! Nisi quibusdam iusto, eum amet.",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        }
+      ]
+    }
+  ],
+  "statistics" : [
+    {
+      "groupName" : "Latest news",
+      "eventList" : [
+        {
+          "id" : "carousel1",
+          "type" : "carousel",
+          "slides" : [
+            {
+              "imageUrl" : "img/1.jpg",
+              "alt" : "First slide",
+              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, ab eos ipsam ea consectetur",
+              "class" : "active"
+            },
+            {
+              "imageUrl" : "img/2.jpg",
+              "alt" : "Second slide",
+              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nobis ipsam minus repudiandae",
+              "class" : ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupName" : "Cuban Tech in social media",
+      "eventList" : [
+        {
+          "type" : "chart",
+          "title" : "Twitter activity",
+          "icon" : "twitter",
+          "headerColor" : "#0288d1",
+          "template" : "chart.htm",
+          "data" : {
+            "type" : "pie",
+            "data" : {
+              "datasets" : [
+                {
+                  "data" : [
+                    "25.7",
+                    "24.9",
+                    "23.05",
+                    "14.85",
+                    "7.35"
+                  ]
+                }
+              ],
+              "labels" : [
+                "item1",
+                "item2",
+                "item3",
+                "item4",
+                "item5"
+              ]
+            },
+            "options" : {
+              "responsive" : "true",
+              "legend" : {
+                "position" : "right"
+              }
+            }
+          }
+        },
+        {
+          "type" : "chart",
+          "title" : "Youtube activity",
+          "icon" : "youtube-play",
+          "headerColor" : "#d32f2f",
+          "template" : "chart.htm",
+          "data" : {
+            "type" : "line",
+            "data" : {
+              "datasets" : [
+                {
+                  "data" : [
+                    5, 8, 14, 12, 16, 17, 22, 16, 17
+                  ],
+                  "label" : "visits",
+                  "fill" : "start"
+                }
+              ]
+            },
+            "options" : {
+              "elements": {
+                "line": {
+                  "tension": 0.000001
+                }
+              },
+              "responsive" : "false",
+              "legend" : {
+                "position" : "bottom"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
   "footer" : [
     {
-      "header" : "About",
-      "items" : [
-        [
-          {
-            "label" : "Overview",
-            "href" : "about.html"
-          },
-          {
-            "label" : "Sponsorship",
-            "href" : "sponsors.html"
-          },
-          {
-            "label" : "FAQ",
-            "href" : "faq.html"
-          },
-          {
-            "label" : "Contact Us",
-            "href" : "contact.html"
-          },
-          {
-            "label" : "Constitution",
-            "href" : "legal.html"
-          },
-          {
-            "label" : "Bylaws",
-            "href" : "bylaws.html"
-          },
-          {
-            "label" : "Privacy",
-            "href" : "privacy.html"
-          },
-          {
-            "label" : "Terms",
-            "href" : "tos.html"
-          }
-        ]
-      ]
+      "content" : "contacto@cuban.tech",
+      "type" : "envelope",
+      "href" : "/contactUs"
     },
     {
-      "header" : "Support Us",
-      "items" : [
-        [
-          {
-            "label" : "Sponsorship",
-            "href" : "sponsors.html"
-          },
-          {
-            "label" : "Donations",
-            "href" : "donate.html"
-          },
-          {
-            "label" : "Buy Stuff",
-            "href" : "store.html"
-          },
-          {
-            "label" : "Thanks",
-            "href" : "thanks.html"
-          }
-        ]
-      ]
+      "content" : "@TheCubanTech",
+      "type" : "twitter",
+      "href" : "https://twitter.com/cubanTech"
     },
     {
-      "header" : "Community",
-      "items" : [
-        [
-          {
-            "label" : "Meetups",
-            "href" : "events.html#meetups"
-          },
-          {
-            "label" : "Conferences",
-            "href" : "events.html#conf"
-          },
-          {
-            "label" : "Collaborations",
-            "href" : "events.html#collab"
-          }
-        ],
-        [
-          {
-            "label" : "Get Involved",
-            "href" : "participate.html"
-          },
-          {
-            "label" : "Code Of Conduct",
-            "href" : "coc.html"
-          }
-        ]
-      ]
+      "content" : "TheCubanTechBlog",
+      "type" : "users",
+      "href" : "https://meetup.com"
+    },
+    {
+      "content" : "fb.me/TheCubanTech",
+      "type" : "facebook",
+      "href" : "https://fb.me/TheCubanTech"
+    },
+    {
+      "content" : "meetup.cubantech.ex",
+      "type" : "meetup",
+      "href" : "https://meetup.cubantech.ex"
+    },
+    {
+      "content" : "youtube.cubantech",
+      "type" : "youtube-play",
+      "href" : "https://youtube.com/cubantech"
     }
   ],
   "signature"  : "The Cuban Tech Group. All rights reserved.",
@@ -276,6 +342,8 @@
   },
   "general" : {
     "language" : "Language",
-    "followUs" : "Follow us:"
+    "followUs" : "Follow us:",
+    "comment" : "comment",
+    "comments" : "comments"
   }
 }

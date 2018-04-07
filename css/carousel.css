@@ -41,6 +41,7 @@ body {
 .carousel {
   height: 500px;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -59,6 +60,22 @@ body {
   height: 500px;
 }
 
+.carousel-mini {
+  height: 250px;
+}
+
+.carousel-mini .item {
+  height: 250px;
+  background-color: #777;
+}
+
+.carousel-mini-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 250px;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */

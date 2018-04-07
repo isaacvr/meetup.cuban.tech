@@ -85,6 +85,7 @@ html {
 }
 body {
   margin: 0;
+  background-color: #aaa;
 }
 article,
 aside,
@@ -1161,7 +1162,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #17202f;
-  background-color: #fff;
+  background-color: #eee;
 }
 input,
 button,
@@ -1447,6 +1448,11 @@ a.text-success:focus {
 }
 .text-info {
   color: #31708f;
+  font-size: 1.7em;
+}
+.text-info * {
+  margin-right: 10px;
+  font-size: 0.7em;
 }
 a.text-info:hover,
 a.text-info:focus {
@@ -4264,6 +4270,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
+
+.navbar .target-item {
+  border-bottom: 1px solid #249DB0;
+}
+
 @media (min-width: 768px) {
   .navbar {
     border-radius: 4px;
@@ -4589,7 +4600,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #eeeeee;
+  background-color: #17202F;
   border-color: none;
 }
 .navbar-default .navbar-brand {
@@ -4604,11 +4615,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #072d4f;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #072d4f;
+  color: #eee;
+  transition: all 100ms;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #620e0e;
+  color: #249db0;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -6073,10 +6085,16 @@ button.close {
     margin-top: 20px;
     font-size: 2em;
   }
+  .info {
+    font-size: 1em;
+  }
 }
 @media (min-width: 992px) {
   .modal-lg {
     width: 900px;
+  }
+  .info {
+    font-size: 1.7em;
   }
 }
 .tooltip {
@@ -6324,7 +6342,7 @@ button.close {
   border-left-color: #fff;
   bottom: -10px;
 }
-.carousel {
+.carousel, .carousel-mini {
   position: relative;
 }
 .carousel-inner {
@@ -6850,7 +6868,7 @@ button.close {
   }
 }
 .navbar-brand {
-  background-image: url('../img/logo.cr.svg');
+  background-image: url('../img/logo.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -7009,9 +7027,15 @@ hr:before {
   top: -14px;
 }
 #footer-links {
-  background-image: url("../img/footer.1x.png");
-  background-position: top right;
+  background-image: url("../img/10.svg"), url("../img/11.svg");
+  background-position: bottom left, top right;
   background-repeat: no-repeat;
+  background-size: auto 90%, auto 100%;
+  padding: 50px;
+}
+
+#footer-links img {
+  width: 90%;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   #footer-links {
@@ -7316,6 +7340,12 @@ hr.dark {
   padding-top: 35px;
 }
 
+.eventList hr {
+  color: #ccc;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .panel {
   border-radius: 2px;
 }
@@ -7324,6 +7354,24 @@ hr.dark {
   width: 100%;
   height: 1px;
   background-color: #ddd;
+}
+
+.no-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.event {
+
+}
+
+.event-group {
+  padding-top: 1px;
+}
+
+.event-group-name {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .event-card {
@@ -7342,16 +7390,20 @@ hr.dark {
   color: #072D4F;
 }
 
+.event-card .event-header .event-title:hover {
+  color: #249db0;
+  cursor: pointer;
+}
+
 .event-header .rating {
   margin-top: 20px;
   text-align: right;
-  cursor: pointer;
+  cursor: default;
 }
 
 .event-header .rating .icon {
   font-size: 1.3em;
   color: rgb(208, 125, 13);
-  cursor: pointer;
 }
 
 .event-agenda {
@@ -7387,6 +7439,10 @@ hr.dark {
   margin-top: 20px;
 }
 
+.event-buttons .event-detail a:hover {
+  background-color: #249db0;
+}
+
 .event-comments {
   width: -moz-max-content;
   width: -webkit-max-content;
@@ -7406,4 +7462,51 @@ hr.dark {
   color: white;
   text-transform: uppercase;
   font-size: 1em;
+}
+
+
+.event-card-mini {
+  padding: 0px;
+}
+
+.event-card-mini .panel-body {
+  padding: 0;
+  text-align: center;
+}
+
+.event-card-mini .event-title {
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  color: white;
+}
+
+.event-card-mini .row {
+  margin: 0;
+}
+
+.latest-news {
+  padding-top: 105px;
+}
+
+.hr-little {
+  border-left: 60px solid;
+  border-right: 60px solid;
+}
+
+.contact {
+  color: #eee;
+  font-size: 1.4em;
+}
+
+.contact:hover {
+  color: #0277bd;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
 }
