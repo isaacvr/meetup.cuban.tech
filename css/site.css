@@ -7507,6 +7507,49 @@ hr.dark {
   text-align: left;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 .text-align-right {
   text-align: right;
+}
+
+.pagination {
+  width: 100%;
+  border-radius: 0px;
+  border-top: 1px solid #ccc;
+}
+
+.pagination li a {
+  background-color: initial;
+  border: initial;
+  font-weight: bold;
+  padding: 10px 4px;
+  margin: 6px 8px;
+  border-radius: 0px;
+  color: #072D4F;
+}
+
+.pagination > li {
+  display: inline-grid;
+  margin-top: -7px;
+}
+
+.pagination li a:focus {
+  border-top: 3px solid #072D4F;
+  padding: 7px 4px;
+}
+
+.pagination li a:hover {
+  background-color: initial;
+}
+
+.pagination > li:last-child > a, .pagination > li:first-child > a {
+  border-radius: 0px;
+}
+
+.pagination li a.pagination-separator {
+  margin: 6px 0px;
+  color: #ccc;
 }

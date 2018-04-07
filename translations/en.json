@@ -126,12 +126,12 @@
   ],
   "eventGroups" : [
     {
-      "groupName" : "Sucediendo Hoy",
+      "groupName" : "Happening Today",
       "eventList" : [
         {
           "title" : "Cuban Tech Meetup #1",
-          "mean" : "47.4",
-          "total" : "100",
+          "mean" : "3",
+          "total" : "5",
           "descriptors" : [
             {
               "type" : "calendar",
@@ -146,7 +146,122 @@
               "content" : "Lorem ipsum"
             }
           ],
-          "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque, voluptatibus, officia in quos eligendi enim soluta qui, at, provident officiis id animi illum perferendis! Nisi quibusdam iusto, eum amet.",
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        },
+        {
+          "title" : "Cuban Tech Meetup #3",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        }
+      ]
+    },
+    {
+      "groupName" : "Last events",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #4",
+          "mean" : "3",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        },
+        {
+          "title" : "Cuban Tech Meetup #5",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        },
+        {
+          "title" : "Cuban Tech Meetup #6",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "See more!!"
+        },
+        {
+          "title" : "Cuban Tech Meetup #7",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
           "comments" : "1",
           "detailBtn" : "See more!!"
         }
