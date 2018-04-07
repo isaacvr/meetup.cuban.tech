@@ -301,11 +301,11 @@ myApp
           event.rating[i] = DESCRIPTORS[ DESCRIPTORS.length - 1 ];
         }
 
-        console.log(lv);
+        //console.log(lv);
 
         var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, DESCRIPTORS.length);
 
-        console.log(lv1);
+        //console.log(lv1);
 
         event.rating[ lv ] = DESCRIPTORS[ lv1 ];
 
@@ -313,7 +313,7 @@ myApp
           event.rating[i] = DESCRIPTORS[ 0 ];
         }
 
-        var cant = Number.parseInt(event.comments);
+        var cant = ~~Number.parseInt(event.comments);
 
         event.comments = cant + ' ' + $scope.general[( cant != 1 ) ? 'comments' : 'comment' ] + ' ';
 

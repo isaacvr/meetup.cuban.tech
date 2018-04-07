@@ -7461,7 +7461,9 @@ hr.dark {
   background-color: #072D4F;
   color: white;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 1.4em;
+  font-family: 'Teko Light';
+  padding: 3px 18px;
 }
 
 
@@ -7479,6 +7481,10 @@ hr.dark {
   padding: 16px;
   text-align: center;
   color: white;
+}
+
+.event-card-mini .event-title * {
+  margin-right: 5px;
 }
 
 .event-card-mini .row {
@@ -7552,4 +7558,8 @@ hr.dark {
 .pagination li a.pagination-separator {
   margin: 6px 0px;
   color: #ccc;
+}
+
+.table {
+  font-family: 'TitilliumWeb Regular';
 }

@@ -313,6 +313,8 @@
   },
   "general" : {
     "language" : "Idioma",
-    "followUs" : "Síguenos:"
+    "followUs" : "Síguenos:",
+    "comment" : "Comentario",
+    "comments" : "Comentarios"
   }
 }

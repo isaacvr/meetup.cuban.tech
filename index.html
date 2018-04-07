@@ -60,119 +60,12 @@
 
     <div class="container">
       <div class="eventList col-xs-8">
-        <!--div class="event-group">
-          <div class="event-group-name">
-            <h1>Sucediendo Hoy</h1>
-          </div>
-          <div class="event">
-            <div class="panel panel-default event-card">
-              <div class="panel-body">
-                <div class="row event-header">
-                  <h2 class="col-xs-7 event-title"> Cuban Tech Meetup #1 </h2>
-                  <div class="rating col-xs-5 pull-right">
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star-o"></span>
-                    <span class="icon fa fa-star-o"></span>
-                  </div>
-                </div>
-                <div class="separator"></div>
-                <div class="row">
-                  <div class="col-xs-12 event-agenda">
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-calendar"></span>
-                      <span class="event-descriptor-content">24/06/2018</span>
-                    </div>
-                    <div class="event-descriptor"> | </div>
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-clock-o"></span>
-                      <span class="event-descriptor-content">3:00pm</span>
-                    </div>
-                    <div class="event-descriptor"> | </div>
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-map-marker"></span>
-                      <span class="event-descriptor-content">3:00pm</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="event-content col-xs-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque, voluptatibus, officia in quos eligendi enim soluta qui, at, provident officiis id animi illum perferendis! Nisi quibusdam iusto, eum amet.
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="event-buttons col-xs-12">
-                    <div class="event-comments pull-left">
-                      <a href="#">5 Comentarios <span class="fa fa-commenting-o"></span></a>
-                    </div>
-                    <div class="event-detail pull-right">
-                      <a class="btn btn-lg btn-default" href="#" role="button"> ver programa </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <hr class="hr-little">
-          </div>
-        </div-->
         <div ng-repeat="group in eventGroups" class="event-group">
           <div class="event-group-name">
             <h1 ng-bind="group.groupName"></h1>
           </div>
           <div class="event" ng-repeat="event in group.eventList" ng-include="'event.htm'">
           </div>
-          <!--div class="event">
-            <div class="panel panel-default event-card">
-              <div class="panel-body">
-                <div class="row event-header">
-                  <h2 class="col-xs-7 event-title"> Pyconn #2 </h2>
-                  <div class="rating col-xs-5 pull-right">
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star"></span>
-                    <span class="icon fa fa-star-o"></span>
-                  </div>
-                </div>
-                <div class="separator"></div>
-                <div class="row">
-                  <div class="col-xs-12 event-agenda">
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-calendar"></span>
-                      <span class="event-descriptor-content">24/06/2018</span>
-                    </div>
-                    <div class="event-descriptor"> | </div>
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-clock-o"></span>
-                      <span class="event-descriptor-content">3:00pm</span>
-                    </div>
-                    <div class="event-descriptor"> | </div>
-                    <div class="event-descriptor">
-                      <span class="icon fa fa-map-marker"></span>
-                      <span class="event-descriptor-content">3:00pm</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="event-content col-xs-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque, voluptatibus, officia in quos eligendi enim soluta qui, at, provident officiis id animi illum perferendis! Nisi quibusdam iusto, eum amet.
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="event-buttons col-xs-12">
-                    <div class="event-comments pull-left">
-                      <a href="#">5 Comentarios <span class="fa fa-commenting-o"></span></a>
-                    </div>
-                    <div class="event-detail pull-right">
-                      <a class="btn btn-lg btn-default" href="#" role="button"> ver programa </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <hr class="hr-little">
-          </div-->
         </div>
         <div class="col-xs-12 text-align-center">
           <ul class="pagination">
@@ -197,7 +90,7 @@
             <h1 ng-bind="group.groupName"></h1>
           </div>
           <div>
-            <div class="event" ng-repeat="event in group.eventList" ng-include="event.type + '.htm'"></div>
+            <div class="event" ng-repeat="event in group.eventList" ng-include="event.template"></div>
           </div>
         </div>
       </div>
@@ -360,6 +253,38 @@
       </div>
     </script>
 
+    <script type="text/ng-template" id="table.htm">
+      <div class="event">
+        <div class="panel panel-default event-card-mini">
+          <div class="panel-body">
+            <div class="row event-header">
+              <h2 class="event-title col-xs-12" ng-style="{'background-color' : event.headerColor }">
+                <span class="fa fa-{{event.icon}}"></span>
+                {{event.title}}
+              </h2>
+            </div>
+            <div class="row">
+              <div class="event-content">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th ng-repeat="th in event.head" ng-bind="th"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="tr in event.body">
+                      <td ng-repeat="td in tr" ng-bind="td"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="hr-little">
+      </div>
+    </script>
+
     <script type="text/ng-template" id="carousel.htm">
       <div class="event">
         <div class="panel panel-default event-card-mini">
@@ -436,7 +361,7 @@
             <div class="row">
               <div class="event-buttons col-xs-12">
                 <div class="event-comments pull-left">
-                  <a href="#">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
+                  <a href="{{event.href}}">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
                 </div>
                 <div class="event-detail pull-right">
                   <a class="btn btn-lg btn-default" href="#" role="button" ng-bind="event.detailBtn"></a>
