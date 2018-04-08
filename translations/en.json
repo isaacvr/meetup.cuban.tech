@@ -130,7 +130,7 @@
       "eventList" : [
         {
           "title" : "Cuban Tech Meetup #1",
-          "mean" : "3",
+          "mean" : "3.5",
           "total" : "5",
           "descriptors" : [
             {
@@ -280,7 +280,7 @@
       "eventList" : [
         {
           "id" : "carousel1",
-          "type" : "carousel",
+          "template" : "carousel.htm",
           "slides" : [
             {
               "imageUrl" : "img/1.jpg",
@@ -384,6 +384,31 @@
             [ "Screenshoot", "82931", "00:12:04" ],
             [ "Azimut"     , "4553" , "00:12:04" ],
             [ "Scroll"     , "985"  , "00:01:23" ]
+          ]
+        }
+      ]
+    },
+    {
+      "groupName" : "Recent Comments",
+      "eventList" : [
+        {
+          "template" : "comment.htm",
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/14.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Hanny Doe",
+              "img" : "img/16.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
           ]
         }
       ]

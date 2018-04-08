@@ -37,9 +37,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav text-center navbar-right">
-            <!--li class="active text-uppercase"><a href="#">
-              <span class="nav-item-main">Home</span>
-            </a></li-->
             <li ng-repeat="navItem in navBar" class="">
               <a href="{{navItem.href}}" class="text-uppercase" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="nav-item-main" ng-class="{ 'target-item': location.pathname == navItem.href }" ng-bind="navItem.label"></span>
@@ -49,8 +46,6 @@
               <a href="#" class="dropdown-toggle text-uppercase nav-item-main" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="flag flag-{{lang}}"></span> <span class="visible-lg-inline-block" ng-bind="general.language"></span><span ng-bind="'( ' + lang + ' )'" class="highlighted visible-lg-inline-block"></span> <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li ng-repeat="lng in langList" ng-click="useLanguage(lng)"><a href="#"><span class="flag flag-{{lng}}"></span> {{langMap[lng]}}</a></li>
-                <!--li><a href="#es"><span class="flag flag-es"></span> Español</a></li>
-                <li><a href="#fr"><span class="flag flag-fr"></span> Français</a></li-->
               </ul>
             </li>
           </ul>
@@ -122,47 +117,6 @@
         <span class="sr-only">Next</span>
       </a>
     </div-->
-    <!--div class="container marketing">
-      <div class="row">
-        <div class="col-lg-4" ng-repeat="mk in marketing">
-          <div class="featurette-panel panel panel-default" ng-style="visual.marketing">
-            <div class="center-block featurette-container">
-              <span class="icon-{{mk.icon}} img-circle featurette-icon"></span>
-            </div>
-            <h2 ng-bind="mk.label"></h2>
-            <hr class="dark">
-            <p ng-bind="mk.content"></p>
-            <p><a class="btn btn-primary text-uppercase" href="#" role="button">{{mk.btnLabel}} &raquo;</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid marketing marketing-inverse">
-      <div class="container">
-        <div ng-repeat="(idx, ft) in featurette">
-          <div class="row featurette">
-            <div class="col-md-5" ng-class="{'col-md-push-7' : idx % 2 == 1}">
-              <img class="featurette-image img-responsive center-block" src="{{ft.image}}" alt="Generic placeholder image">
-            </div>
-            <div class="col-md-7" ng-class="{'col-md-pull-5' : idx % 2 == 1}">
-              <div class="panel panel-default">
-                <div class="hidden-xs hidden-sm" ng-class="{'panel-caret-left' : idx % 2 == 0, 'panel-caret-right' : idx % 2 == 1}">
-                  <div class="panel-caret-inner"></div>
-                </div>
-                <div class="panel-caret-top visible-xs visible-sm">
-                  <div class="panel-caret-inner"></div>
-                </div>
-                <div class="panel-body">
-                  <h2 class="featurette-heading">{{ft.heading}} <span class="text-muted" ng-bind="ft.headingMuted"></span></h2>
-                  <p class="lead" ng-bind="ft.content"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr class="featurette-divider text-muted" ng-show="idx < featurette.length - 1">
-        </div>
-      </div>
-    </div-->
 
     <footer id="footer">
       <div class="container-fluid">
@@ -180,33 +134,6 @@
               <div class="info text-uppercase text-info col-xs-4">tecnología</div>
               <div class="info text-uppercase text-info col-xs-4">educación</div>
             </div>
-            <!--div class="col-md-2 col-sm-3 col-xs-5">
-              <h4 class="text-uppercase text-info">Support us</h4>
-              <ul class="list-unstyled">
-                <li><a href="sponsors.html">Sponsorship</a></li>
-                <li><a href="donate.html">Donations</a></li>
-                <li><a href="store.html">Buy Stuff</a></li>
-                <li><a href="thanks.html">Thanks</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-10">
-              <h4 class="text-uppercase text-info">Community</h4>
-              <div class="row">
-                <div class="col-xs-6 col-sm-12">
-                  <ul class="list-unstyled">
-                    <li><a href="events.html#meetups">Meet-ups</a></li>
-                    <li><a href="events.html#conf">Conferences</a></li>
-                    <li><a href="events.html#collab">Collaborations</a></li>
-                  </ul>
-                </div>
-                <div class="col-xs-6 col-sm-12">
-                  <ul class="list-unstyled">
-                    <li><a href="participate.html">Get involved</a></li>
-                    <li><a href="coc.html">Code of Conduct</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div-->
           </div>
         </div>
         <div id="footer-copy" class="row bg-primary">
@@ -249,8 +176,8 @@
             </div>
           </div>
         </div>
-        <hr class="hr-little">
       </div>
+      <hr class="hr-little">
     </script>
 
     <script type="text/ng-template" id="table.htm">
@@ -281,8 +208,8 @@
             </div>
           </div>
         </div>
-        <hr class="hr-little">
       </div>
+      <hr class="hr-little">
     </script>
 
     <script type="text/ng-template" id="carousel.htm">
@@ -325,52 +252,81 @@
             </div>
           </div>
         </div>
-      </div-->
+      </div>
       <hr class="hr-little">
     </script>
 
-    <script type="text/ng-template" id="event.htm">
-      <p class="hidden" ng-bind="processEvent(event)"></p>
-        <div class="panel panel-default event-card">
+    <script type="text/ng-template" id="comment.htm">
+      <div class="event">
+        <div class="panel panel-default event-card-mini">
           <div class="panel-body">
-            <div class="row event-header">
-              <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
-              <div class="rating col-xs-5 pull-right">
-                <span class="icon {{event.rating[0]}}"></span>
-                <span class="icon {{event.rating[1]}}"></span>
-                <span class="icon {{event.rating[2]}}"></span>
-                <span class="icon {{event.rating[3]}}"></span>
-                <span class="icon {{event.rating[4]}}"></span>
-              </div>
-            </div>
-            <div class="separator"></div>
             <div class="row">
-              <div class="col-xs-12 event-agenda">
-                <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-                  <div ng-show="index != 0" class="event-descriptor"> | </div>
-                  <div class="event-descriptor">
-                    <span class="icon fa fa-{{descriptor.type}}"></span>
-                    <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
+              <div class="event-content">
+                <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
+                  <img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar">
+                  <div class="col-xs-9">
+                    <div class="comment-inner">
+                      <span class="comment-user" ng-bind="comment.name"></span><br>
+                      <span class="panel-caret-left">
+                        <span class="panel-caret-inner"></span>
+                      </span>
+                      <div class="comment-content" ng-bind="comment.comment"></div>
+                      <div class="comment-buttons">
+                        <span class="fa fa-plus"></span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="event-content col-xs-12" ng-bind="event.content"></div>
-            </div>
-            <div class="row">
-              <div class="event-buttons col-xs-12">
-                <div class="event-comments pull-left">
-                  <a href="{{event.href}}">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
-                </div>
-                <div class="event-detail pull-right">
-                  <a class="btn btn-lg btn-default" href="#" role="button" ng-bind="event.detailBtn"></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr class="hr-little">
+      </div>
+      <hr class="hr-little">
+    </script>
+
+    <script type="text/ng-template" id="event.htm">
+      <p class="hidden" ng-bind="processEvent(event)"></p>
+      <div class="panel panel-default event-card">
+        <div class="panel-body">
+          <div class="row event-header">
+            <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
+            <div class="rating col-xs-5 pull-right">
+              <span class="icon {{event.rating[0]}}"></span>
+              <span class="icon {{event.rating[1]}}"></span>
+              <span class="icon {{event.rating[2]}}"></span>
+              <span class="icon {{event.rating[3]}}"></span>
+              <span class="icon {{event.rating[4]}}"></span>
+            </div>
+          </div>
+          <div class="separator"></div>
+          <div class="row">
+            <div class="col-xs-12 event-agenda">
+              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
+                <div ng-show="index != 0" class="event-descriptor"> | </div>
+                <div class="event-descriptor">
+                  <span class="icon fa fa-{{descriptor.type}}"></span>
+                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="event-content col-xs-12" ng-bind="event.content"></div>
+          </div>
+          <div class="row">
+            <div class="event-buttons col-xs-12">
+              <div class="event-comments pull-left">
+                <a href="{{event.href}}">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
+              </div>
+              <div class="event-detail pull-right">
+                <a class="btn btn-lg btn-default" href="#" role="button" ng-bind="event.detailBtn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="hr-little">
     </script>
 
     <!-- end ng templates -->
