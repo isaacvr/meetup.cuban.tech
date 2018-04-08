@@ -28,38 +28,31 @@
   ],
   "carousel" : [
     {
-      "imageUrl" : "img/1.jpg",
+      "imageUrl" : "img/20.png",
       "alt" : "First slide",
-      "headline" : "Example headline.",
-      "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nobis quas, in est veniam. Veritatis obcaecati, officiis temporibus voluptatem illum nisi laudantium impedit cupiditate. Voluptate laborum perferendis tempora libero dicta.",
+      "headline" : "Cuban tech meetup.",
+      "content" : "Technology Meetups for the comunity of developers",
       "class" : "active"
     },
     {
-      "imageUrl" : "img/2.jpg",
+      "imageUrl" : "img/meetup.david.mertz.jpg",
       "alt" : "Second slide",
       "headline" : "Another example headline.",
       "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       "class" : ""
     },
     {
-      "imageUrl" : "img/3.jpg",
+      "imageUrl" : "img/meetup.dockercuba.isla.png",
       "alt" : "Third slide",
       "headline" : "One more for good measure.",
       "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       "class" : ""
     },
     {
-      "imageUrl" : "img/4.jpg",
+      "imageUrl" : "img/meetup.vbrito.jpg",
       "alt" : "Fourth slide",
       "headline" : "This is a custom slide.",
       "content" : "The only way that you can reach your dream is going to bed.",
-      "class" : ""
-    },
-    {
-      "imageUrl" : "img/5.jpg",
-      "alt" : "Fifth slide",
-      "headline" : "Quinto slide",
-      "content" : "HOLAAAAAA, este es un slide que acabo de crear ahora",
       "class" : ""
     }
   ],
@@ -150,6 +143,34 @@
           "comments" : "1",
           "detailBtn" : "See program",
           "href" : "meetup_1.htm"
+        }
+      ]
+    },
+    {
+      "groupName" : "Planified Events",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #2",
+          "mean" : "4.7",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "6",
+          "detailBtn" : "See program",
+          "href" : "meetup_2.htm"
         }
       ]
     },
@@ -408,6 +429,11 @@
               "name" : "Hanny Doe",
               "img" : "img/16.png",
               "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Yor",
+              "img" : "img/14.png",
+              "comment" : "ajsd iasidaosdu aosud ioasdoiasdausod aois duaoisduoasuod uaosiduoiasduaoid uaois udoasudoiasu dioaudoiausdoiu"
             }
           ]
         }

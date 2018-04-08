@@ -6345,6 +6345,7 @@ button.close {
 .carousel, .carousel-mini {
   position: relative;
 }
+
 .carousel-inner {
   position: relative;
   overflow: hidden;
@@ -7603,7 +7604,7 @@ hr.dark {
   border-top: 8px solid transparent;
   border-left: none;
   bottom: 0;
-  left: 8px;
+  left: 7px;
   top: calc(-100% + 50px);
   color: rgba(0, 0, 0, 0.2);
 }
