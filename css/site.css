@@ -6342,6 +6342,7 @@ button.close {
   border-left-color: #fff;
   bottom: -10px;
 }
+
 .carousel, .carousel-mini {
   position: relative;
 }
@@ -7612,6 +7613,7 @@ hr.dark {
 .comment .comment-content {
   max-height: 4em;
   overflow: hidden;
+  padding: 5px;
 }
 
 .comment .comment-buttons {
@@ -7622,4 +7624,38 @@ hr.dark {
 
 .comment .comment-buttons * {
   cursor: pointer;
+}
+
+.carousel-image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  background-color: black;
+  overflow: hidden;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  opacity: 1;
+  transition: all 700ms;
+  transform: scale(1) ease-out;
+}
+
+.carousel-image.not-visible {
+  opacity: 0;
+  transform: scale(2) rotate(10deg);
+}
+
+.carousel-description {
+  background-color: white;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 700ms;
+  text-align: justify;
+}
+
+.carousel-description.not-visible {
+  color: white;
 }

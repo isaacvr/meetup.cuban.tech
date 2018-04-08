@@ -49,6 +49,10 @@ myApp
         fr : "Français"
       };
 
+      $scope.test = (e) => {
+        console.log(e);
+      };
+
       /// Lista de lenguajes disponibles
       $scope.langList = [ "en", "es" ];
 
@@ -321,6 +325,128 @@ myApp
 
     }
   ]);//*/
+
+myApp.directive('carousel', function() {
+
+  return {
+
+    template : [
+      '<div id="{{model.id}}" class="carousel-mini">',
+        '<div class="carousel-image-container">',
+          '<img class="carousel-image">',
+        '</div>',
+        '<a class="left carousel-control" data-slide="prev">',
+          '<span class="icon-prev icon-chevron-left" aria-hidden="true"></span>',
+          '<span class="sr-only">Previous</span>',
+        '</a>',
+        '<a class="right carousel-control" data-slide="next">',
+          '<span class="icon-next icon-chevron-right" aria-hidden="true"></span>',
+          '<span class="sr-only">Next</span>',
+        '</a>',
+      '</div>',
+      '<div class="carousel-description">',
+        'description goes here',
+      '</div>'
+    ].join(' '),
+    replace : false,
+    restrict : "E",
+    scope : {
+      model : "="
+    },
+    link : function(scope, element, attrs, ctrl, transcludeFn) {
+
+      console.log(arguments);
+
+      var slides = scope.model.slides;
+
+      var elem = element[0];
+      var image = elem.querySelector('.carousel-image');
+      var description = elem.querySelector('.carousel-description');
+      var controls = elem.querySelectorAll('.carousel-control');
+
+      if ( image === null || description === null) {
+        return;
+      }
+
+      var len = slides.length;
+      var id = 0;
+
+      var itv;
+
+      var INTERVAL = 6000, TIMEOUT = 700;
+
+      image.src = slides[id].imageUrl;
+      description.innerHTML = slides[id].content;
+
+      var createInterval = function createInterval() {
+
+        image.classList.add('not-visible');
+        description.classList.add('not-visible');
+
+        setTimeout(function() {
+          image.src = slides[id].imageUrl;
+          description.innerHTML = slides[id].content;
+          image.classList.remove('not-visible');
+          description.classList.remove('not-visible');
+        }, TIMEOUT);
+
+        clearInterval(itv);
+
+        itv = setInterval(function() {
+
+          image.classList.add('not-visible');
+          description.classList.add('not-visible');
+
+          setTimeout(function() {
+            id = (id + 1) % len;
+            image.src = slides[id].imageUrl;
+            description.innerHTML = slides[id].content;
+            image.classList.remove('not-visible');
+            description.classList.remove('not-visible');
+          }, TIMEOUT);
+
+        }, INTERVAL);
+
+      };
+
+      createInterval();
+
+      if ( controls != null ) {
+
+        for (var i = 0; i < controls.length; i += 1) {
+
+          controls[i].addEventListener('click', function(e) {
+
+            var res = this.getAttribute('data-slide');
+
+            if ( res === null ) {
+
+              return;
+
+            }
+
+            clearInterval(itv);
+
+            if ( res === 'prev' ) {
+              id = ( id - 1 + len ) % len;
+              createInterval();
+            } else if ( res === 'next' ) {
+              id = (id + 1) % len;
+              createInterval();
+            }
+
+            //createInterval();
+
+          }, false);
+
+        }
+
+      }
+
+    }
+  };
+
+});
 
 ///                    *** NON-ANGULAR STUFF ***
 

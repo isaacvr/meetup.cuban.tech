@@ -306,13 +306,31 @@
             {
               "imageUrl" : "img/1.jpg",
               "alt" : "First slide",
-              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, ab eos ipsam ea consectetur",
-              "class" : "active"
+              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+              "class" : ""
             },
             {
               "imageUrl" : "img/2.jpg",
               "alt" : "Second slide",
-              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex nobis ipsam minus repudiandae",
+              "content" : "Quas voluptatibus, voluptas quae voluptatem tempora exercitationem neque asperiores recusandae error",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/3.jpg",
+              "alt" : "Second slide",
+              "content" : "enim culpa iure ullam odio quia tenetur itaque provident reprehenderit fuga.",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/4.jpg",
+              "alt" : "Second slide",
+              "content" : "Eius tempore alias iste ipsum veniam repudiandae, aliquid dolor, ut labore quia ea minima! Veritatis eum",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/5.jpg",
+              "alt" : "Second slide",
+              "content" : "Corporis alias magnam, tenetur sit ullam deleniti. Rem, eligendi.",
               "class" : ""
             }
           ]
