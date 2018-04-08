@@ -10,86 +10,49 @@
         "content" : "The Cuban Tech Group"
       }
     ],
-    "title"    : "La página del Grupo Cubano de Tecnología"
+    "title"    : "Página de inicio de Cuban Tech Group"
   },
   "navBar" : [
     {
       "label" : "Eventos",
-      "href" : "events"
+      "href" : "/"
     },
     {
       "label" : "Quienes Somos",
-      "href" : "aboutUs"
+      "href" : "/aboutUs"
     },
     {
-      "label" : "Contacto",
-      "href" : "contactUs"
+      "label" : "Contáctenos",
+      "href" : "/contactUs"
     }
   ],
   "carousel" : [
     {
-      "imageUrl" : "img/1.jpg",
+      "imageUrl" : "img/20.png",
       "alt" : "First slide",
-      "headline" : "Example headline.",
-      "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nobis quas, in est veniam. Veritatis obcaecati, officiis temporibus voluptatem illum nisi laudantium impedit cupiditate. Voluptate laborum perferendis tempora libero dicta.",
-      "buttons" : [
-        {
-          "href" : "#",
-          "text" : "Let's do it"
-        }
-      ],
+      "headline" : "Cuban tech meetup.",
+      "content" : "Technology Meetups for the comunity of developers",
       "class" : "active"
     },
     {
-      "imageUrl" : "img/2.jpg",
+      "imageUrl" : "img/meetup.david.mertz.jpg",
       "alt" : "Second slide",
       "headline" : "Another example headline.",
       "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-      "buttons" : [
-        {
-          "href" : "#",
-          "text" : "Learn More"
-        }
-      ],
       "class" : ""
     },
     {
-      "imageUrl" : "img/3.jpg",
+      "imageUrl" : "img/meetup.dockercuba.isla.png",
       "alt" : "Third slide",
       "headline" : "One more for good measure.",
       "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
-      "buttons" : [
-        {
-          "href" : "#",
-          "text" : "Browse gallery"
-        }
-      ],
       "class" : ""
     },
     {
-      "imageUrl" : "img/4.jpg",
+      "imageUrl" : "img/meetup.vbrito.jpg",
       "alt" : "Fourth slide",
       "headline" : "This is a custom slide.",
       "content" : "The only way that you can reach your dream is going to bed.",
-      "buttons" : [
-        {
-          "href" : "#",
-          "text" : "Accelerate rabbits"
-        }
-      ],
-      "class" : ""
-    },
-    {
-      "imageUrl" : "img/5.jpg",
-      "alt" : "Fifth slide",
-      "headline" : "Quinto slide",
-      "content" : "HOLAAAAAA, este es un slide que acabo de crear ahora",
-      "buttons" : [
-        {
-          "href" : "#",
-          "text" : "Mi boton"
-        }
-      ],
       "class" : ""
     }
   ],
@@ -114,19 +77,19 @@
   "marketing" : [
     {
       "icon" : "tech",
-      "label" : "Technology",
+      "label" : "Tecnología",
       "content" : "Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.",
       "btnLabel" : "View details"
     },
     {
       "icon" : "edu",
-      "label" : "Education",
+      "label" : "Educación",
       "content" : "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.",
       "btnLabel" : "View details"
     },
     {
       "icon" : "users",
-      "label" : "Community",
+      "label" : "Comunidad",
       "content" : "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
       "btnLabel" : "View details"
     }
@@ -152,106 +115,379 @@
       "content" : "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
       "direction" : "left",
       "image" : "img/4.jpg"
+    }
+  ],
+  "eventGroups" : [
+    {
+      "groupName" : "Sucediendo Hoy",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #1",
+          "mean" : "3.5",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_1.htm"
+        }
+      ]
     },
     {
-      "heading" : "AKJJsdk alksd slakj",
-      "headingMuted" : "HELLOU",
-      "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae quasi saepe tenetur ipsam reiciendis ut in magnam ea rerum perspiciatis. Facilis, repudiandae hic sunt consequuntur magnam doloribus aliquam repellat architecto.",
-      "direction" : "right",
-      "image" : "img/2.jpg"
+      "groupName" : "Eventos planificados",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #2",
+          "mean" : "4.7",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "6",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_2.htm"
+        }
+      ]
+    },
+    {
+      "groupName" : "Últimos eventos",
+      "eventList" : [
+        {
+          "title" : "Cuban Tech Meetup #3",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_3.htm"
+        },
+        {
+          "title" : "Cuban Tech Meetup #4",
+          "mean" : "3",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_4.htm"
+        },
+        {
+          "title" : "Cuban Tech Meetup #5",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "ver programa",
+          "href" : "meetup_5.htm"
+        },
+        {
+          "title" : "Cuban Tech Meetup #6",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_6.htm"
+        },
+        {
+          "title" : "Cuban Tech Meetup #7",
+          "mean" : "4",
+          "total" : "5",
+          "descriptors" : [
+            {
+              "type" : "calendar",
+              "content" : "12/4/2018"
+            },
+            {
+              "type" : "clock-o",
+              "content" : "3:00pm"
+            },
+            {
+              "type" : "map-marker",
+              "content" : "Lorem ipsum"
+            }
+          ],
+          "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
+          "comments" : "1",
+          "detailBtn" : "Ver programa",
+          "href" : "meetup_7.htm"
+        }
+      ]
+    }
+  ],
+  "statistics" : [
+    {
+      "groupName" : "Últimas noticias",
+      "eventList" : [
+        {
+          "id" : "carousel1",
+          "template" : "carousel.htm",
+          "slides" : [
+            {
+              "imageUrl" : "img/1.jpg",
+              "alt" : "First slide",
+              "content" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/2.jpg",
+              "alt" : "Second slide",
+              "content" : "Quas voluptatibus, voluptas quae voluptatem tempora exercitationem neque asperiores recusandae error",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/3.jpg",
+              "alt" : "Second slide",
+              "content" : "enim culpa iure ullam odio quia tenetur itaque provident reprehenderit fuga.",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/4.jpg",
+              "alt" : "Second slide",
+              "content" : "Eius tempore alias iste ipsum veniam repudiandae, aliquid dolor, ut labore quia ea minima! Veritatis eum",
+              "class" : ""
+            },
+            {
+              "imageUrl" : "img/5.jpg",
+              "alt" : "Second slide",
+              "content" : "Corporis alias magnam, tenetur sit ullam deleniti. Rem, eligendi.",
+              "class" : ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupName" : "Cuban Tech en las redes",
+      "eventList" : [
+        {
+          "type" : "chart",
+          "title" : "Actividad en Twitter",
+          "icon" : "twitter",
+          "headerColor" : "#0288d1",
+          "template" : "chart.htm",
+          "data" : {
+            "type" : "pie",
+            "data" : {
+              "datasets" : [
+                {
+                  "data" : [
+                    "25.7",
+                    "24.9",
+                    "23.05",
+                    "14.85",
+                    "7.35"
+                  ]
+                }
+              ],
+              "labels" : [
+                "item1",
+                "item2",
+                "item3",
+                "item4",
+                "item5"
+              ]
+            },
+            "options" : {
+              "responsive" : "true",
+              "legend" : {
+                "position" : "right"
+              }
+            }
+          }
+        },
+        {
+          "type" : "chart",
+          "title" : "Actividad en Youtube",
+          "icon" : "youtube-play",
+          "headerColor" : "#d32f2f",
+          "template" : "chart.htm",
+          "data" : {
+            "type" : "line",
+            "data" : {
+              "datasets" : [
+                {
+                  "data" : [
+                    5, 8, 14, 12, 16, 17, 22, 16, 17
+                  ],
+                  "label" : "visits",
+                  "fill" : "start"
+                }
+              ]
+            },
+            "options" : {
+              "elements": {
+                "line": {
+                  "tension": 0.000001
+                }
+              },
+              "responsive" : "false",
+              "legend" : {
+                "position" : "bottom"
+              }
+            }
+          }
+        },
+        {
+          "type" : "table",
+          "title" : "Actividad en Facebook",
+          "icon" : "facebook",
+          "headerColor" : "#0266a1",
+          "template" : "table.htm",
+          "head" : [ "Events", "Amount", "Other" ],
+          "body" : [
+            [ "Meetups"    , "1432" , "00:12:04" ],
+            [ "Nodeschool" , "328"  , "00:12:04" ],
+            [ "Pyladies"   , "2139" , "00:12:04" ],
+            [ "Motherboard", "821"  , "00:12:04" ],
+            [ "Screenshoot", "82931", "00:12:04" ],
+            [ "Azimut"     , "4553" , "00:12:04" ],
+            [ "Scroll"     , "985"  , "00:01:23" ]
+          ]
+        }
+      ]
+    },
+    {
+      "groupName" : "Comentarios recientes",
+      "eventList" : [
+        {
+          "template" : "comment.htm",
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/14.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Hanny Doe",
+              "img" : "img/16.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Yor",
+              "img" : "img/14.png",
+              "comment" : "ajsd iasidaosdu aosud ioasdoiasdausod aois duaoisduoasuod uaosiduoiasduaoid uaois udoasudoiasu dioaudoiausdoiu"
+            }
+          ]
+        }
+      ]
     }
   ],
   "footer" : [
     {
-      "header" : "About",
-      "items" : [
-        [
-          {
-            "label" : "Overview",
-            "href" : "about.html"
-          },
-          {
-            "label" : "Sponsorship",
-            "href" : "sponsors.html"
-          },
-          {
-            "label" : "FAQ",
-            "href" : "faq.html"
-          },
-          {
-            "label" : "Contact Us",
-            "href" : "contact.html"
-          },
-          {
-            "label" : "Constitution",
-            "href" : "legal.html"
-          },
-          {
-            "label" : "Bylaws",
-            "href" : "bylaws.html"
-          },
-          {
-            "label" : "Privacy",
-            "href" : "privacy.html"
-          },
-          {
-            "label" : "Terms",
-            "href" : "tos.html"
-          }
-        ]
-      ]
+      "content" : "contacto@cuban.tech",
+      "type" : "envelope",
+      "href" : "/contactUs"
     },
     {
-      "header" : "Support Us",
-      "items" : [
-        [
-          {
-            "label" : "Sponsorship",
-            "href" : "sponsors.html"
-          },
-          {
-            "label" : "Donations",
-            "href" : "donate.html"
-          },
-          {
-            "label" : "Buy Stuff",
-            "href" : "store.html"
-          },
-          {
-            "label" : "Thanks",
-            "href" : "thanks.html"
-          }
-        ]
-      ]
+      "content" : "@TheCubanTech",
+      "type" : "twitter",
+      "href" : "https://twitter.com/cubanTech"
     },
     {
-      "header" : "Community",
-      "items" : [
-        [
-          {
-            "label" : "Meetups",
-            "href" : "events.html#meetups"
-          },
-          {
-            "label" : "Conferences",
-            "href" : "events.html#conf"
-          },
-          {
-            "label" : "Collaborations",
-            "href" : "events.html#collab"
-          }
-        ],
-        [
-          {
-            "label" : "Get Involved",
-            "href" : "participate.html"
-          },
-          {
-            "label" : "Code Of Conduct",
-            "href" : "coc.html"
-          }
-        ]
-      ]
+      "content" : "TheCubanTechBlog",
+      "type" : "users",
+      "href" : "https://meetup.com"
+    },
+    {
+      "content" : "fb.me/TheCubanTech",
+      "type" : "facebook",
+      "href" : "https://fb.me/TheCubanTech"
+    },
+    {
+      "content" : "meetup.cubantech.ex",
+      "type" : "meetup",
+      "href" : "https://meetup.cubantech.ex"
+    },
+    {
+      "content" : "youtube.cubantech",
+      "type" : "youtube-play",
+      "href" : "https://youtube.com/cubantech"
     }
   ],
   "signature"  : "The Cuban Tech Group. All rights reserved.",
@@ -312,7 +548,7 @@
     ]
   },
   "general" : {
-    "language" : "Idioma",
+    "language" : "Lala",
     "followUs" : "Síguenos:",
     "comment" : "Comentario",
     "comments" : "Comentarios"

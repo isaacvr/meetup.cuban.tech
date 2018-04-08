@@ -355,7 +355,7 @@ myApp.directive('carousel', function() {
     },
     link : function(scope, element, attrs, ctrl, transcludeFn) {
 
-      console.log(arguments);
+      //console.log(arguments);
 
       var slides = scope.model.slides;
 
@@ -373,7 +373,7 @@ myApp.directive('carousel', function() {
 
       var itv;
 
-      var INTERVAL = 6000, TIMEOUT = 700;
+      var INTERVAL = 6000, TIMEOUT = 500;
 
       image.src = slides[id].imageUrl;
       description.innerHTML = slides[id].content;
