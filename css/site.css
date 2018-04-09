@@ -7512,18 +7512,6 @@ hr.dark {
   color: #0277bd;
 }
 
-.text-align-left {
-  text-align: left;
-}
-
-.text-align-center {
-  text-align: center;
-}
-
-.text-align-right {
-  text-align: right;
-}
-
 .pagination {
   width: 100%;
   border-radius: 0px;
@@ -7783,4 +7771,25 @@ hr.dark {
 
 .gallery .hr-little {
   margin-top: 5px;
+}
+
+.team-username {
+  height: 40px;
+}
+
+#team ul {
+  padding: 0;
+}
+
+.team-username {
+
+}
+
+.team-user-description {
+  padding: 0px 25px;
+}
+
+.team-user-contact {
+  list-style: none;
+  font-weight: bold;
 }

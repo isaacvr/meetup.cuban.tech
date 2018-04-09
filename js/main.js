@@ -29,7 +29,7 @@ myApp
       $scope.location = $window.location;
 
       /// Lenguaje de preferencia
-      $scope.preferedLanguage = 'es';
+      $scope.preferedLanguage = 'en';
 
       /// Lenguaje seleccionado actualmente (inicialmente el preferido)
       $scope.lang             = $scope.preferedLanguage;
@@ -317,6 +317,14 @@ myApp
         var cant = ~~Number.parseInt(event.comments);
 
         event.comments = cant + ' ' + $scope.general[( cant != 1 ) ? 'comments' : 'comment' ] + ' ';
+
+      };
+
+      $scope.processNavItem = function processNavItem(item) {
+
+        if ( !( item.regexp instanceof RegExp) ) {
+          item.regexp = new RegExp('^/' + item.regexp + '(\\.(htm|html|asp|php|jsp))?(#)?$');
+        }
 
       };
 

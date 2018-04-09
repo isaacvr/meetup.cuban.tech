@@ -15,15 +15,18 @@
   "navBar" : [
     {
       "label" : "Events",
-      "href" : "/"
+      "href" : "/",
+      "regexp" : "(events)?"
     },
     {
       "label" : "Who we are",
-      "href" : "/aboutUs"
+      "href" : "aboutUs",
+      "regexp" : "aboutUs"
     },
     {
       "label" : "contact us",
-      "href" : "/contactUs"
+      "href" : "contactUs",
+      "regexp" : "contactUs"
     }
   ],
   "carousel" : [
@@ -465,6 +468,107 @@
     "img/17.png",
     "img/logo.cr.png"
   ],
+  "team" : [
+    {
+      "name" : "John Doe",
+      "img" : "img/15.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@johndoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "john@doe.com"
+        }
+      ]
+    },
+    {
+      "name" : "Jane Doe",
+      "img" : "img/16.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@janedoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "jane@doe.com"
+        }
+      ]
+    },
+    {
+      "name" : "John Doe",
+      "img" : "img/15.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@johndoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "john@doe.com"
+        }
+      ]
+    },
+    {
+      "name" : "John Doe",
+      "img" : "img/15.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@johndoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "john@doe.com"
+        }
+      ]
+    },
+    {
+      "name" : "John Doe",
+      "img" : "img/15.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@johndoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "john@doe.com"
+        }
+      ]
+    },
+    {
+      "name" : "John Doe",
+      "img" : "img/15.png",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates deserunt est culpa nisi doloribus ea dolore illo harum inventore soluta",
+      "contacts" : [
+        {
+          "type" : "twitter",
+          "content" : "@johndoe"
+        },
+        {
+          "type" : "envelope",
+          "content" : "john@doe.com"
+        }
+      ]
+    }
+  ],
+  "contactForm" : {
+    "header" : "Contact Us",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum harum enim cumque, dolore repellat quidem, qui eligendi ipsa mollitia, laborum quo animi eaque eius rem odit, quas eum. Praesentium, perferendis.",
+    "name" : "Name",
+    "phone" : "Phone",
+    "email" : "Email",
+    "message" : "Message",
+    "send" : "Send"
+  },
   "footer" : {
     "contacts" : [
       {
@@ -566,6 +670,8 @@
     "followUs" : "Follow us:",
     "comment" : "Comment",
     "comments" : "Comments",
-    "ourSponsors" : "Our Sponsors"
+    "ourSponsors" : "Our Sponsors",
+    "whoweare" : "Who we are",
+    "contactUs" : "Contact Us"
   }
 }

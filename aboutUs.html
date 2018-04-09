@@ -22,6 +22,22 @@
 
     <link href="css/carousel.css" rel="stylesheet" />
     <link href="css/flags.css" rel="stylesheet" />
+
+    <style>
+
+      .featurette-icon {
+        background-color: #fff;
+        padding: 6px;
+        box-shadow: unset;
+        max-width: 40%;
+        margin-top: -5%;
+      }
+
+      .marketing h2 {
+        padding-top: 70px;
+      }
+
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -54,77 +70,27 @@
       </div>
     </nav>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li ng-repeat="(index, slide) in carousel" data-target="#myCarousel" data-slide-to="{{index}}" class="{{slide.class}}"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item {{slide.class}}" ng-repeat="slide in carousel">
-          <img class="first-slide" src="{{slide.imageUrl}}" alt="{{slide.alt}}">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1> {{ slide.headline | uppercase }} </h1>
-              <hr/>
-              <p class="content" ng-bind="slide.content"></p>
-              <p><a ng-repeat="btn in slide.buttons" class="btn btn-lg btn-default" href="{{btn.href}}" role="button">{{ btn.text | uppercase }}</a></p>
+    <div class="container marketing" id="team">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="text-center" ng-bind="general.whoweare"></h2>
+          <hr class="hr-little dark">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="user in team">
+          <div class="featurette-panel panel panel-default" ng-style="visual.marketing">
+            <div class="center-block featurette-container">
+              <img src="{{user.img}}" class="img-thumbnail img-circle featurette-icon"></img>
             </div>
+            <h2 class="team-username" ng-bind="user.name"></h2>
+            <div class="team-user-description" ng-bind="user.description"></div>
+            <ul>
+              <li class="team-user-contact" ng-repeat="cnt in user.contacts">
+                <span class="fa fa-{{cnt.type}}"></span> {{cnt.content}}
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="icon-prev icon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="icon-next icon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
-    <!--div ng-model="statistics" ng-include="'carousel.htm'"></div-->
-
-    <div class="container">
-      <div class="eventList col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <div ng-repeat="group in eventGroups" class="event-group">
-          <div class="event-group-name">
-            <h1 ng-bind="group.groupName"></h1>
-          </div>
-          <div class="event" ng-repeat="event in group.eventList" ng-include="'event.htm'">
-          </div>
-        </div>
-        <div class="col-xs-12 text-center">
-          <ul class="pagination">
-            <li><a href="">1</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">2</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">3</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">4</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">5</a></li>
-          </ul>
-        </div>
-      </div>
-      <!--div class="col-xs-1">
-        <div class="vertical-separator"></div>
-      </div-->
-      <div class="eventList col-md-4 col-lg-4 visible-lg visible-md">
-        <div ng-repeat="group in statistics" class="event-group">
-          <div class="event-group-name">
-            <h1 ng-bind="group.groupName"></h1>
-          </div>
-          <div>
-            <div class="event" ng-repeat="event in group.eventList" ng-include="event.template"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <gallery list="sponsors">
-        <span ng-bind="general.ourSponsors"></span>
-      </gallery>
     </div>
 
     <footer id="footer">

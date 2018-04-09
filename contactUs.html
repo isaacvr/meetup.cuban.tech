@@ -22,6 +22,42 @@
 
     <link href="css/carousel.css" rel="stylesheet" />
     <link href="css/flags.css" rel="stylesheet" />
+
+    <style>
+
+      .form-group input, .form-group textarea {
+        border: none;
+        border-radius: 2px;
+        padding: 6px;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-group label {
+        margin-top: 15px;
+        font-style: italic;
+        font-weight: normal;
+      }
+
+      .form-group label::before {
+        content: '* ';
+      }
+
+      #contactForm {
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        margin-top: 10px;
+        background-color: #072D4F;
+        color: white;
+        text-transform: uppercase;
+        font-size: 1.4em;
+        font-family: 'Teko Light';
+        padding: 0px 35px !important;
+        letter-spacing: 1px;
+      }
+
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -54,77 +90,37 @@
       </div>
     </nav>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li ng-repeat="(index, slide) in carousel" data-target="#myCarousel" data-slide-to="{{index}}" class="{{slide.class}}"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item {{slide.class}}" ng-repeat="slide in carousel">
-          <img class="first-slide" src="{{slide.imageUrl}}" alt="{{slide.alt}}">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1> {{ slide.headline | uppercase }} </h1>
-              <hr/>
-              <p class="content" ng-bind="slide.content"></p>
-              <p><a ng-repeat="btn in slide.buttons" class="btn btn-lg btn-default" href="{{btn.href}}" role="button">{{ btn.text | uppercase }}</a></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center" ng-bind="contactForm.header"></h1>
+          <hr class="hr-little dark">
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="row" id="contactForm">
+        <div class="col-xs-12">
+          <form role="form" action="">
+            <div class="form-group">
+              <div class="col-sm-6">
+                <label for="contactName" ng-bind="contactForm.name"></label>
+                <input class="col-xs-12" type="text" name="name" id="contactName" required><br>
+                <label for="contactPhone" ng-bind="contactForm.phone"></label>
+                <input class="col-xs-12" type="text" name="phone" id="contactPhone" required><br>
+                <label for="contactEmail" ng-bind="contactForm.email"></label>
+                <input class="col-xs-12" type="text" name="email" id="contactEmail" required>
+              </div>
+              <div class="col-sm-6">
+                <label for="contactMessage" ng-bind="contactForm.message"></label>
+                <textarea class="col-xs-12" type="text" name="message" id="contactMessage" rows="7" required></textarea>
+              </div>
+              <div class="col-xs-12 text-center">
+                <input type="submit" class="btn" value="{{contactForm.send}}">
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="icon-prev icon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="icon-next icon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
-    <!--div ng-model="statistics" ng-include="'carousel.htm'"></div-->
-
-    <div class="container">
-      <div class="eventList col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <div ng-repeat="group in eventGroups" class="event-group">
-          <div class="event-group-name">
-            <h1 ng-bind="group.groupName"></h1>
-          </div>
-          <div class="event" ng-repeat="event in group.eventList" ng-include="'event.htm'">
-          </div>
-        </div>
-        <div class="col-xs-12 text-center">
-          <ul class="pagination">
-            <li><a href="">1</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">2</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">3</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">4</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">5</a></li>
-          </ul>
-        </div>
-      </div>
-      <!--div class="col-xs-1">
-        <div class="vertical-separator"></div>
-      </div-->
-      <div class="eventList col-md-4 col-lg-4 visible-lg visible-md">
-        <div ng-repeat="group in statistics" class="event-group">
-          <div class="event-group-name">
-            <h1 ng-bind="group.groupName"></h1>
-          </div>
-          <div>
-            <div class="event" ng-repeat="event in group.eventList" ng-include="event.template"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <gallery list="sponsors">
-        <span ng-bind="general.ourSponsors"></span>
-      </gallery>
     </div>
 
     <footer id="footer">
