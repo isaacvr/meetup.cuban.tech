@@ -5,7 +5,7 @@
 
 ///                               *** ANGULAR STUFF ***
 
-var myApp = angular.module('cubantech', []);
+var myApp = angular.module('cubantech', ['ngAnimate']);
 
 myApp
   .controller('cubantechController', [
@@ -29,7 +29,7 @@ myApp
       $scope.location = $window.location;
 
       /// Lenguaje de preferencia
-      $scope.preferedLanguage = 'en';
+      $scope.preferedLanguage = 'es';
 
       /// Lenguaje seleccionado actualmente (inicialmente el preferido)
       $scope.lang             = $scope.preferedLanguage;
@@ -47,10 +47,6 @@ myApp
         es : "Español",
         pt : "Português",
         fr : "Français"
-      };
-
-      $scope.test = (e) => {
-        console.log(e);
       };
 
       /// Lista de lenguajes disponibles
@@ -299,7 +295,8 @@ myApp
 
         var lv = $scope.getLevel(part, 0, total, divs);
 
-        event.rating = [ '', '', '', '', '' ];
+        event.rating = ' '.repeat(divs).split(' ');
+        event.rating.pop();
 
         for (var i = 0; i < lv; i += 1) {
           event.rating[i] = DESCRIPTORS[ DESCRIPTORS.length - 1 ];
@@ -442,6 +439,97 @@ myApp.directive('carousel', function() {
         }
 
       }
+
+    }
+  };
+
+});
+
+myApp.directive('gallery', function() {
+
+  return {
+
+    template : [
+      '<div class="gallery">',
+        '<div class="gallery-header" ng-transclude>',
+        '</div>',
+        '<hr class="hr-little black">',
+        '<div class="row gallery-list">',
+          '<div class="gallery-btn-container pull-left">',
+            '<span class="icon-prev icon-chevron-left" aria-hidden="true"></span>',
+          '</div>',
+          '<div ng-repeat="sp in secondList" class="visible-sm visible-md visible-lg gallery-item">',
+            '<img class="gallery-image" src="{{sp}}" alt="">',
+          '</div>',
+          '<div class="gallery-btn-container pull-right">',
+            '<span class="icon-next icon-chevron-right" aria-hidden="true"></span>',
+          '</div>',
+        '</div>',
+      '</div>'
+    ].join(' '),
+    replace : true,
+    transclude : true,
+    restrict : "E",
+    scope : {
+      list : "="
+    },
+    link : function(scope, element, attrs, ctrl, transcludeFn) {
+
+      // console.log(element);
+
+      var elem = element[0];
+      var carets = elem.querySelectorAll('.gallery-btn-container');
+
+      var listCopy = [];
+      scope.secondList = [];
+
+      var ini = 0, fin = 3, total;
+
+      carets[0].addEventListener('click', function() {
+
+        ini = (ini - 1 + total) % total;
+        fin = (fin - 1 + total) % total;
+
+        scope.$apply(function() {
+          scope.secondList.pop();
+          scope.secondList.unshift(listCopy[ini]);
+        });
+
+      }, false);
+
+      carets[1].addEventListener('click', function() {
+
+        ini = (ini + 1) % total;
+        fin = (fin + 1) % total;
+
+        scope.$apply(function() {
+          scope.secondList.shift();
+          scope.secondList.push(listCopy[fin]);
+        });
+
+      }, false);
+
+      scope.$watch('list', function() {
+
+        if ( Array.isArray(scope.list) === true) {
+
+          listCopy = [].concat(scope.list);
+
+          scope.secondList = listCopy.slice(0, 4);
+
+          ini = 0;
+          fin = 3;
+          total = listCopy.length;
+
+          if (listCopy.length <= 4) {
+            for (var i = 0; i < carets.length; i += 1 ) {
+              carets[i].style.opacity = 0;
+            }
+          }//*/
+
+        }
+
+      });
 
     }
   };

@@ -7466,6 +7466,7 @@ hr.dark {
   font-size: 1.4em;
   font-family: 'Teko Light';
   padding: 3px 18px;
+  letter-spacing: 1px;
 }
 
 
@@ -7658,4 +7659,128 @@ hr.dark {
 
 .carousel-description.not-visible {
   color: white;
+}
+
+.gallery {
+  padding: 50px 20px;
+  padding-top: 40px;
+  background-color: #fff;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  height: 315px;
+  overflow: hidden;
+}
+
+.gallery .gallery-list {
+
+  padding-top: 20px;
+
+}
+
+.gallery-item {
+  text-align: center;
+  width: 20%;
+  display: inline-block !important;
+  margin-left: 3.333333333333%;
+  height: 130px;
+  vertical-align: top;
+  padding: 30px 16px;
+  background-color: #eee;
+  transition: height 200ms, margin-top 200ms;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.gallery-btn-container + .gallery-item:not(.ng-animated) {
+  margin-left: 0;
+}
+
+.gallery-btn-container + .gallery-item.ng-animated {
+  margin-left: 0;
+}
+
+.gallery-item .gallery-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.gallery .gallery-header {
+  font-size: 2.4em;
+  font-family: 'Teko Light';
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  text-align: center;
+}
+
+.gallery .gallery-btn-container {
+  display: inline-block;
+  width: 4%;
+  height: 100px;
+}
+
+.gallery .gallery-btn-container .icon-prev {
+  font-size: 2em;
+  float: left;
+  margin-top: calc(50px - 0.5em);
+}
+
+.gallery .gallery-btn-container:hover {
+  color: #249db0;
+  cursor: pointer;
+}
+
+.gallery .gallery-btn-container .icon-next {
+  font-size: 2em;
+  float: right;
+  margin-top: calc(50px - 0.5em);
+}
+
+.gallery-item.ng-enter {
+  -webkit-transition: 200ms linear all 300ms;
+  -moz-transition: 200ms linear all 300ms;
+  -ms-transition: 200ms linear all 300ms;
+  -o-transition: 200ms linear all 300ms;
+  transition: 200ms linear all 300ms;
+
+}
+
+.gallery-item.ng-leave {
+  -webkit-transition: 300ms linear all;
+  -moz-transition: 300ms linear all;
+  -ms-transition: 300ms linear all;
+  -o-transition: 300ms linear all;
+  transition: 300ms linear all;
+}
+
+.gallery-item.ng-enter {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+}
+
+.gallery-item.ng-enter.ng-enter-active {
+  opacity: 1;
+  width: 20%;
+  padding: 16px;
+}
+
+.gallery-item.ng-leave {
+  opacity: 1;
+  width: 18%;
+  padding: 16px;
+}
+
+.gallery-item.ng-leave.ng-leave-active {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+}
+
+.black {
+  color: black;
+}
+
+.gallery .hr-little {
+  margin-top: 5px;
 }

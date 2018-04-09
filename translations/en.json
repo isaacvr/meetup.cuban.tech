@@ -435,7 +435,7 @@
           "commentList" : [
             {
               "name" : "John Doe",
-              "img" : "img/14.png",
+              "img" : "img/15.png",
               "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
             },
             {
@@ -450,7 +450,7 @@
             },
             {
               "name" : "Yor",
-              "img" : "img/14.png",
+              "img" : "img/15.png",
               "comment" : "ajsd iasidaosdu aosud ioasdoiasdausod aois duaoisduoasuod uaosiduoiasduaoid uaois udoasudoiasu dioaudoiausdoiu"
             }
           ]
@@ -458,38 +458,52 @@
       ]
     }
   ],
-  "footer" : [
-    {
-      "content" : "contacto@cuban.tech",
-      "type" : "envelope",
-      "href" : "/contactUs"
-    },
-    {
-      "content" : "@TheCubanTech",
-      "type" : "twitter",
-      "href" : "https://twitter.com/cubanTech"
-    },
-    {
-      "content" : "TheCubanTechBlog",
-      "type" : "users",
-      "href" : "https://meetup.com"
-    },
-    {
-      "content" : "fb.me/TheCubanTech",
-      "type" : "facebook",
-      "href" : "https://fb.me/TheCubanTech"
-    },
-    {
-      "content" : "meetup.cubantech.ex",
-      "type" : "meetup",
-      "href" : "https://meetup.cubantech.ex"
-    },
-    {
-      "content" : "youtube.cubantech",
-      "type" : "youtube-play",
-      "href" : "https://youtube.com/cubantech"
-    }
+  "sponsors" : [
+    "img/12.png",
+    "img/13.png",
+    "img/14.png",
+    "img/17.png",
+    "img/logo.cr.png"
   ],
+  "footer" : {
+    "contacts" : [
+      {
+        "content" : "contacto@cuban.tech",
+        "type" : "envelope",
+        "href" : "/contactUs"
+      },
+      {
+        "content" : "@TheCubanTech",
+        "type" : "twitter",
+        "href" : "https://twitter.com/cubanTech"
+      },
+      {
+        "content" : "TheCubanTechBlog",
+        "type" : "users",
+        "href" : "https://meetup.com"
+      },
+      {
+        "content" : "fb.me/TheCubanTech",
+        "type" : "facebook",
+        "href" : "https://fb.me/TheCubanTech"
+      },
+      {
+        "content" : "meetup.cubantech.ex",
+        "type" : "meetup",
+        "href" : "https://meetup.cubantech.ex"
+      },
+      {
+        "content" : "youtube.cubantech",
+        "type" : "youtube-play",
+        "href" : "https://youtube.com/cubantech"
+      }
+    ],
+    "slogan" : [
+      "comunities",
+      "technology",
+      "education"
+    ]
+  },
   "signature"  : "The Cuban Tech Group. All rights reserved.",
   "organigram" : {
     "name"        : "Olemis Lang",
@@ -551,6 +565,7 @@
     "language" : "Language",
     "followUs" : "Follow us:",
     "comment" : "Comment",
-    "comments" : "Comments"
+    "comments" : "Comments",
+    "ourSponsors" : "Our Sponsors"
   }
 }

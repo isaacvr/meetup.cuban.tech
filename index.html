@@ -120,21 +120,25 @@
       </div>
     </div>
 
+    <div class="container">
+      <gallery list="sponsors">
+        <span ng-bind="general.ourSponsors"></span>
+      </gallery>
+    </div>
+
     <footer id="footer">
       <div class="container-fluid">
         <div id="footer-links" class="container text-center">
           <div class="row">
             <div class="col-xs-12 col-lg-6 text-align-left">
-              <h4 class="text-uppercase text-info"><span class="fa fa-desktop"></span>cuban.tech</h4>
+              <h4 class="text-uppercase text-info" style="letter-spacing: 3px; font-weight: bold;"><span class="fa fa-desktop"></span>cuban.tech</h4>
               <div class="row">
-                <a class="text-info contact col-xs-6" ng-repeat="link in footer" href="{{link.href}}"><span class="fa fa-{{link.type}}"></span>{{link.content}}</a>
+                <a class="text-info contact col-xs-12 col-sm-6" ng-repeat="link in footer.contacts" href="{{link.href}}"><span class="fa fa-{{link.type}}"></span>{{link.content}}</a>
               </div>
             </div>
             <div class="col-lg-6 visible-lg">
               <img src="img/9.png" alt="">
-              <div class="info text-uppercase text-info col-xs-4">comunidades</div>
-              <div class="info text-uppercase text-info col-xs-4">tecnología</div>
-              <div class="info text-uppercase text-info col-xs-4">educación</div>
+              <div ng-repeat="item in footer.slogan" class="info text-uppercase text-info col-xs-4" ng-bind="item"></div>
             </div>
           </div>
         </div>
@@ -155,6 +159,7 @@
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/holder.min.js"></script>
