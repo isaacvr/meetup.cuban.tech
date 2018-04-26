@@ -170,13 +170,18 @@
           "commentList" : [
             {
               "name" : "John Doe",
-              "img" : "img/15.png",
+              "img" : "img/16.png",
               "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
             },
             {
               "name" : "Simon Smith",
               "img" : "img/15.png",
               "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Clara Stark",
+              "img" : "img/16.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eos accusamus nemo doloremque saepe molestiae, voluptas maxime, molestias recusandae eligendi et dolor ullam hic minima repellat optio alias, ratione quisquam!"
             }
           ]
         }
@@ -204,9 +209,37 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "6",
           "detailBtn" : "See program",
-          "href" : "meetup_2.htm"
+          "href" : "meetup_2.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         }
       ]
     },
@@ -232,9 +265,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_3.htm"
+          "href" : "meetup_3.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         },
         {
           "title" : "Cuban Tech Meetup #4",
@@ -255,9 +321,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_4.htm"
+          "href" : "meetup_4.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         },
         {
           "title" : "Cuban Tech Meetup #5",
@@ -278,9 +377,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_5.htm"
+          "href" : "meetup_5.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         },
         {
           "title" : "Cuban Tech Meetup #6",
@@ -301,9 +433,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_6.htm"
+          "href" : "meetup_6.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         },
         {
           "title" : "Cuban Tech Meetup #7",
@@ -324,9 +489,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_7.htm"
+          "href" : "meetup_7.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         }
       ]
     }

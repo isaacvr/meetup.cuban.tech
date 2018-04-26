@@ -366,6 +366,28 @@ myApp
 
       };
 
+      $scope.redirectTo = function redirectTo(dir, params) {
+
+        var res = dir + '?';
+
+        var first = true;
+
+        for (var i in params) {
+
+          if ( first === false ) {
+            res = res + '&';
+          } else {
+            first = false;
+          }
+
+          res = res + i.toString() + '=' + params[i];
+
+        }
+
+        window.location.href = res;
+
+      };
+
       $scope.processNavItem = function processNavItem(item) {
 
         if ( !( item.regexp instanceof RegExp) ) {
@@ -659,7 +681,7 @@ myApp.directive('event', function() {
           <h3 class="text-left">Leave your comment:</h3>
           <form action="" class="col-xs-12" role="form">
             <div class="form-group">
-              <input type="text" class="col-xs-12 form-control" placeholder="Name..." required autofocus>
+              <input type="text" class="col-xs-12 form-control" placeholder="Name..." required>
             </div>
             <div class="form-group">
               <input type="email" class="col-xs-12 form-control" placeholder="Email..." required>
@@ -691,10 +713,35 @@ myApp.directive('event', function() {
 
       scope.$parent.$watch('eventGroups', function() {
 
-        if ( Array.isArray(scope.$parent.eventGroups) ) {
+        var src = window.location.search;
+        var obj = {};
 
+        src = src.substr(1, src.length);
+
+        src = src.split('&');
+
+        src.forEach(function(e) {
+          e = e.split('=');
+          obj[ e[0] ] = e[1];
+        });
+
+        //console.log(src, obj);
+
+        if ( scope.hasOwnProperty('group') === false ||
+             scope.hasOwnProperty('model') === false ) {
+          if ( ('group' in obj) && ('model' in obj) ) {
+            scope.group = ~~obj.group;
+            scope.model = ~~obj.model;
+          } else {
+            console.log('group or model not in pbject');
+            window.location.href = '/';
+          }
+        } else {
           scope.group = ~~scope.group;
           scope.model = ~~scope.model;
+        }
+
+        if ( Array.isArray(scope.$parent.eventGroups) ) {
 
           //console.log(scope.$parent.eventGroups);
 
@@ -705,7 +752,13 @@ myApp.directive('event', function() {
 
               scope.$parent.processEvent(scope.event);
 
+            } else {
+              console.log('Length exceeded!!! 1');
+              //window.location.href = '/';
             }
+          } else {
+            console.log('Length exceeded!!! 2');
+            //window.location.href = '/';
           }
 
         }
