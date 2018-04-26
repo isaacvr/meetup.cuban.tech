@@ -7397,15 +7397,19 @@ hr.dark {
   cursor: pointer;
 }
 
-.event-header .rating {
+.rating {
   margin-top: 20px;
   text-align: right;
   cursor: default;
 }
 
-.event-header .rating .icon {
+.rating .icon {
   font-size: 1.3em;
   color: rgb(208, 125, 13);
+}
+
+.rateUs .rating {
+  margin-top: 0px;
 }
 
 .event-agenda {
@@ -7469,7 +7473,6 @@ hr.dark {
   letter-spacing: 1px;
 }
 
-
 .event-card-mini {
   padding: 0px;
 }
@@ -7494,8 +7497,34 @@ hr.dark {
   margin: 0;
 }
 
+.event-program {
+  list-style: none;
+  padding: 20px 17px;
+  border-radius: 2px;
+}
+
+.event-program div {
+  border: 1px solid #00000044;
+  padding: 8px 0px;
+  background-color: #f0f2f2;
+}
+
+.event-program div span {
+  margin: 3px 0px;
+  font-size: 1.4em;
+}
+
+.event-program div span::before {
+  margin: 0px 10px;
+  font-size: 1.2em;
+}
+
 .latest-news {
   padding-top: 105px;
+}
+
+.rateUs {
+  padding: 15px;
 }
 
 .hr-little {
@@ -7792,4 +7821,43 @@ hr.dark {
 .team-user-contact {
   list-style: none;
   font-weight: bold;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.comment-long .comment .comment-content {
+  max-height: initial;
+}
+
+.comment-long .comment .comment-buttons {
+  display: none;
+}
+
+.comment-long .comment > img {
+  width: 9%;
+}
+
+.comment-long .comment > div {
+  width: calc(100% - 9%);
+}
+
+.comments-counter {
+  display: none;
+}
+
+.comment-long .event-card-mini {
+  padding: 10px 15px;
+}
+
+.comment-long .comments-counter {
+  display: initial;
+}
+
+.form-control {
+  border-radius: 0px;
+  border: 1px solid #ccc;
+  margin-bottom: 6px;
+  background-color: #eeeeeebb;
 }

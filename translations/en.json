@@ -20,12 +20,12 @@
     },
     {
       "label" : "Who we are",
-      "href" : "aboutUs",
+      "href" : "/aboutUs",
       "regexp" : "aboutUs"
     },
     {
       "label" : "contact us",
-      "href" : "contactUs",
+      "href" : "/contactUs",
       "regexp" : "contactUs"
     }
   ],
@@ -143,9 +143,42 @@
             }
           ],
           "content" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. wonderful serenity has taken pos session of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Et, consec tetuer adipiscing elit, sed diam nonummy nibh psum dolor sit amet, adipiscing elit, like these sweet mornings consectetuer adipiscing elit...",
-          "comments" : "1",
           "detailBtn" : "See program",
-          "href" : "meetup_1.htm"
+          "href" : "meetup_1.htm",
+          "program" : [
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            },
+            {
+              "title" : "Title of the meetup",
+              "time" : "3:00pm",
+              "name" : "John Doe"
+            }
+          ],
+          "commentList" : [
+            {
+              "name" : "John Doe",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            },
+            {
+              "name" : "Simon Smith",
+              "img" : "img/15.png",
+              "comment" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eaque ullam natus, molestias, sit, velit repellendus dignissimos nostrum ipsum eveniet totam eum dicta. Atque ullam beatae totam, nostrum asperiores neque."
+            }
+          ]
         }
       ]
     },
@@ -672,6 +705,13 @@
     "comments" : "Comments",
     "ourSponsors" : "Our Sponsors",
     "whoweare" : "Who we are",
-    "contactUs" : "Contact Us"
+    "contactUs" : "Contact Us",
+    "rateEvent" : "Rate this event to help us to improve it",
+    "person" : "person",
+    "people" : "people",
+    "commentedThisMeetup" : "commented this meetup",
+    "hasS" : "has",
+    "hasP" : "has",
+    "publishComment" : "Publish Comment"
   }
 }

@@ -669,6 +669,13 @@
     "comments" : "Comentarios",
     "ourSponsors" : "Nuestros patrocinadores",
     "whoweare" : "Quienes somos",
-    "contactUs" : "Contáctenos"
+    "contactUs" : "Contáctenos",
+    "rateEvent" : "Rate this event to help us to improve it",
+    "person" : "persona",
+    "people" : "personas",
+    "commentedThisMeetup" : "comentado este meetup",
+    "hasS" : "ha",
+    "hasP" : "han",
+    "publishComment" : "Publicar Comentario"
   }
 }

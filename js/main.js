@@ -26,6 +26,14 @@ myApp
         "#9575cd"
       ];
 
+      $scope.STARS_DESCRIPTORS = [
+        'fa fa-star-o',
+        'fa fa-star-half-o',
+        'fa fa-star'
+      ];
+
+      $scope.eventGroups = [];
+
       $scope.location = $window.location;
 
       /// Lenguaje de preferencia
@@ -92,6 +100,15 @@ myApp
         }
 
       });//*/
+
+      $scope.$watch('eventGroups', function() {
+
+        if ( $scope.eventGroups.length > 0 ) {
+          $scope.selectedGroup = $scope.eventGroups[0];
+          $scope.selectedEvent = 0;
+        }
+
+      });
 
       $scope.useLanguage = function useLanguage(lng) {
 
@@ -282,16 +299,12 @@ myApp
 
         //console.log(event);
 
-        var DESCRIPTORS = [
-          'fa fa-star-o',
-          'fa fa-star-half-o',
-          'fa fa-star',
-        ]
-
         var part = Number(event.mean);
         var total = Number(event.total);
         var divs = 5;
         var factor = total / divs;
+
+        var len = $scope.STARS_DESCRIPTORS.length;
 
         var lv = $scope.getLevel(part, 0, total, divs);
 
@@ -299,31 +312,64 @@ myApp
         event.rating.pop();
 
         for (var i = 0; i < lv; i += 1) {
-          event.rating[i] = DESCRIPTORS[ DESCRIPTORS.length - 1 ];
+          event.rating[i] = $scope.STARS_DESCRIPTORS[ len - 1 ];
         }
 
         //console.log(lv);
 
-        var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, DESCRIPTORS.length);
+        var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, len);
 
         //console.log(lv1);
 
-        event.rating[ lv ] = DESCRIPTORS[ lv1 ];
+        event.rating[ lv ] = $scope.STARS_DESCRIPTORS[ lv1 ];
 
         for (var i = lv + 1; i < divs; i += 1) {
-          event.rating[i] = DESCRIPTORS[ 0 ];
+          event.rating[i] = $scope.STARS_DESCRIPTORS[ 0 ];
         }
 
-        var cant = ~~Number.parseInt(event.comments);
+        event.commentList = event.commentList || [];
+
+        var cant = event.commentList.length;
 
         event.comments = cant + ' ' + $scope.general[( cant != 1 ) ? 'comments' : 'comment' ] + ' ';
+
+        event.rated = [];
+
+        for (var i = 0; i < divs; i += 1) {
+          event.rated.push($scope.STARS_DESCRIPTORS[0]);
+        }
+
+        var len1 = event.commentList.length;
+
+        event.counter = [
+          len1,
+          $scope.general[ len1 == 1 ? 'person' : 'people' ],
+          $scope.general[ len1 == 1 ? 'hasS' : 'hasP' ],
+          $scope.general.commentedThisMeetup
+        ].join(' ');
+
+      };
+
+      $scope.rateEvent = function rateEvent(event, id) {
+
+        var len = $scope.STARS_DESCRIPTORS.length;
+
+        event.userRating = id;
+
+        for (var i = 0; i < event.rated.length; i += 1) {
+          if ( i < id ) {
+            event.rated[i] = $scope.STARS_DESCRIPTORS[ len - 1 ];
+          } else {
+            event.rated[i] = $scope.STARS_DESCRIPTORS[ 0 ];
+          }
+        }
 
       };
 
       $scope.processNavItem = function processNavItem(item) {
 
         if ( !( item.regexp instanceof RegExp) ) {
-          item.regexp = new RegExp('^/' + item.regexp + '(\\.(htm|html|asp|php|jsp))?(#)?$');
+          item.regexp = new RegExp('^/' + item.regexp + '(\\.(htm|html|asp|php|jsp))?(#)?$', 'i');
         }
 
       };
@@ -534,6 +580,133 @@ myApp.directive('gallery', function() {
               carets[i].style.opacity = 0;
             }
           }//*/
+
+        }
+
+      });
+
+    }
+  };
+
+});
+
+myApp.directive('event', function() {
+
+  return {
+
+    template : [
+      `
+    <div class="event">
+      <div class="panel panel-default event-card">
+        <div class="panel-body">
+          <div class="row event-header">
+            <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
+            <div class="rating col-xs-5 pull-right">
+              <span class="icon {{event.rating[0]}}"></span>
+              <span class="icon {{event.rating[1]}}"></span>
+              <span class="icon {{event.rating[2]}}"></span>
+              <span class="icon {{event.rating[3]}}"></span>
+              <span class="icon {{event.rating[4]}}"></span>
+            </div>
+          </div>
+          <div class="separator"></div>
+          <div class="row">
+            <div class="col-xs-12 event-agenda">
+              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
+                <div ng-show="index != 0" class="event-descriptor"> | </div>
+                <div class="event-descriptor">
+                  <span class="icon fa fa-{{descriptor.type}}"></span>
+                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="event-content col-xs-12" ng-bind="event.content"></div>
+          </div>
+        </div>
+        <div class="separator"></div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="text-center"> Event program: </h3>
+            <ul class="col-xs-12">
+              <li class="event-program col-xs-6" ng-repeat="program in event.program">
+                <div class="col-xs-12">
+                  <span class="col-xs-12 fa fa-bullhorn" ng-bind="program.title"></span>
+                  <span class="col-xs-12 fa fa-clock-o" ng-bind="program.time"></span>
+                  <span class="col-xs-12 fa fa-user-o" ng-bind="program.name"></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="separator"></div>
+        <div class="row rateUs">
+          <div class="text-right col-xs-9" ng-bind="$parent.general.rateEvent"></div>
+          <div class="rating col-xs-3">
+            <span class="icon pointer {{event.rated[0]}}" ng-click="$parent.rateEvent(event, 1)"></span>
+            <span class="icon pointer {{event.rated[1]}}" ng-click="$parent.rateEvent(event, 2)"></span>
+            <span class="icon pointer {{event.rated[2]}}" ng-click="$parent.rateEvent(event, 3)"></span>
+            <span class="icon pointer {{event.rated[3]}}" ng-click="$parent.rateEvent(event, 4)"></span>
+            <span class="icon pointer {{event.rated[4]}}" ng-click="$parent.rateEvent(event, 5)"></span>
+          </div>
+        </div>
+      </div>
+      <div class="event comment-long" ng-include="'comment.htm'"></div>
+      <div class="separator"></div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 class="text-left">Leave your comment:</h3>
+          <form action="" class="col-xs-12" role="form">
+            <div class="form-group">
+              <input type="text" class="col-xs-12 form-control" placeholder="Name..." required autofocus>
+            </div>
+            <div class="form-group">
+              <input type="email" class="col-xs-12 form-control" placeholder="Email..." required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="col-xs-12 form-control" placeholder="Web...">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="event-detail">
+              <input type="submit" class="btn pull-left" value="{{$parent.general.publishComment}}"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      `
+    ].join(' '),
+    replace : true,
+    restrict : "E",
+    scope : {
+      group : "@",
+      model : "@"
+    },
+    link : function(scope, element, attrs, ctrl, transcludeFn) {
+
+      //console.log(scope.$parent);
+
+      scope.$parent.$watch('eventGroups', function() {
+
+        if ( Array.isArray(scope.$parent.eventGroups) ) {
+
+          scope.group = ~~scope.group;
+          scope.model = ~~scope.model;
+
+          //console.log(scope.$parent.eventGroups);
+
+          if ( scope.group < scope.$parent.eventGroups.length ) {
+            if ( scope.model < scope.$parent.eventGroups[ scope.group ].eventList.length ) {
+
+              scope.event = scope.$parent.eventGroups[ scope.group ].eventList[ scope.model ];
+
+              scope.$parent.processEvent(scope.event);
+
+            }
+          }
 
         }
 

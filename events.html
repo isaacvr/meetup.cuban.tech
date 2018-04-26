@@ -22,42 +22,6 @@
 
     <link href="css/carousel.css" rel="stylesheet" />
     <link href="css/flags.css" rel="stylesheet" />
-
-    <style>
-
-      .form-group input, .form-group textarea {
-        border: none;
-        border-radius: 2px;
-        padding: 6px;
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
-      }
-
-      .form-group label {
-        margin-top: 15px;
-        font-style: italic;
-        font-weight: normal;
-      }
-
-      .form-group label::before {
-        content: '* ';
-      }
-
-      #contactForm {
-        margin-bottom: 20px;
-      }
-
-      .btn {
-        margin-top: 10px;
-        background-color: #072D4F;
-        color: white;
-        text-transform: uppercase;
-        font-size: 1.4em;
-        font-family: 'Teko Light';
-        padding: 0px 35px !important;
-        letter-spacing: 1px;
-      }
-
-    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -90,35 +54,28 @@
       </div>
     </nav>
 
+    <!--div ng-model="statistics" ng-include="'carousel.htm'"></div-->
+
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1 class="text-center" ng-bind="contactForm.header"></h1>
-          <hr class="hr-little dark">
+      <div class="eventList col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div ng-model="selectedGroup" class="event-group">
+          <div class="event-group-name">
+            <h1 ng-bind="selectedGroup.groupName"></h1>
+          </div>
+          <event group="0" model="0"></event>
         </div>
       </div>
-      <div class="separator"></div>
-      <div class="row" id="contactForm">
-        <div class="col-xs-12">
-          <form role="form" action="">
-            <div class="form-group">
-              <div class="col-sm-6">
-                <label for="contactName" ng-bind="contactForm.name"></label>
-                <input class="col-xs-12" type="text" name="name" id="contactName" required><br>
-                <label for="contactPhone" ng-bind="contactForm.phone"></label>
-                <input class="col-xs-12" type="text" name="phone" id="contactPhone" required><br>
-                <label for="contactEmail" ng-bind="contactForm.email"></label>
-                <input class="col-xs-12" type="email" name="email" id="contactEmail" required>
-              </div>
-              <div class="col-sm-6">
-                <label for="contactMessage" ng-bind="contactForm.message"></label>
-                <textarea class="col-xs-12" type="text" name="message" id="contactMessage" rows="7" required></textarea>
-              </div>
-              <div class="col-xs-12 text-center">
-                <input type="submit" class="btn" value="{{contactForm.send}}">
-              </div>
-            </div>
-          </form>
+      <!--div class="col-xs-1">
+        <div class="vertical-separator"></div>
+      </div-->
+      <div class="eventList col-md-4 col-lg-4 visible-lg visible-md">
+        <div ng-repeat="group in statistics" class="event-group">
+          <div class="event-group-name">
+            <h1 ng-bind="group.groupName"></h1>
+          </div>
+          <div>
+            <div class="event" ng-repeat="event in group.eventList" ng-include="event.template"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -224,6 +181,7 @@
     <script type="text/ng-template" id="comment.htm">
       <div class="panel panel-default event-card-mini">
         <div class="panel-body">
+          <h3 class="comments-counter text-left col-xs-12" ng-bind="event.counter"></h3>
           <div class="row">
             <div class="event-content">
               <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
@@ -240,50 +198,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="event.htm">
-      <p class="hidden" ng-bind="processEvent(event)"></p>
-      <div class="panel panel-default event-card">
-        <div class="panel-body">
-          <div class="row event-header">
-            <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
-            <div class="rating col-xs-5 pull-right">
-              <span class="icon {{event.rating[0]}}"></span>
-              <span class="icon {{event.rating[1]}}"></span>
-              <span class="icon {{event.rating[2]}}"></span>
-              <span class="icon {{event.rating[3]}}"></span>
-              <span class="icon {{event.rating[4]}}"></span>
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="row">
-            <div class="col-xs-12 event-agenda">
-              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-                <div ng-show="index != 0" class="event-descriptor"> | </div>
-                <div class="event-descriptor">
-                  <span class="icon fa fa-{{descriptor.type}}"></span>
-                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="event-content col-xs-12" ng-bind="event.content"></div>
-          </div>
-          <div class="row">
-            <div class="event-buttons col-xs-12">
-              <div class="event-comments pull-left">
-                <a href="{{event.href}}">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
-              </div>
-              <div class="event-detail pull-right">
-                <a class="btn btn-lg btn-default" href="#" role="button" ng-bind="event.detailBtn"></a>
               </div>
             </div>
           </div>
