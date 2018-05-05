@@ -54,15 +54,13 @@
       </div>
     </nav>
 
-    <!--div ng-model="statistics" ng-include="'carousel.htm'"></div-->
-
     <div class="container">
       <div class="eventList col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <div ng-model="selectedGroup" class="event-group">
           <div class="event-group-name">
             <h1 ng-bind="selectedGroup.groupName"></h1>
           </div>
-          <event></event>
+          <event class="expanded" event="detailEvent"></event>
         </div>
       </div>
       <!--div class="col-xs-1">
@@ -113,6 +111,7 @@
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -175,34 +174,6 @@
 
     <script type="text/ng-template" id="carousel.htm">
       <carousel model="event"></carousel>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="comment.htm">
-      <div class="panel panel-default event-card-mini">
-        <div class="panel-body">
-          <h3 class="comments-counter text-left col-xs-12" ng-bind="event.counter"></h3>
-          <div class="row">
-            <div class="event-content">
-              <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
-                <img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar">
-                <div class="col-xs-9">
-                  <div class="comment-inner">
-                    <span class="comment-user" ng-bind="comment.name"></span><br>
-                    <span class="panel-caret-left">
-                      <span class="panel-caret-inner"></span>
-                    </span>
-                    <div class="comment-content" ng-bind="comment.comment"></div>
-                    <div class="comment-buttons">
-                      <span class="fa fa-plus"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <hr class="hr-little">
     </script>
 

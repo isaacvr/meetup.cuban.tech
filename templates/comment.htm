@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="panel panel-default event-card-mini">
+    <div class="panel-body">
+      <h3 class="comments-counter text-left col-xs-12" ng-bind="event.counter"></h3>
+      <div class="row comment-content">
+        <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
+          <!--img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar"-->
+          <img src="{{DEFAULT_AVATAR}}" alt="" class="col-xs-3 comment-avatar">
+          <div class="col-xs-9">
+            <div class="comment-inner">
+              <span class="comment-user pull-left" ng-bind="comment.member_name"></span><br>
+              <span class="panel-caret-left">
+                <span class="panel-caret-inner"></span>
+              </span>
+              <div class="comment-content text-left" ng-bind="comment.comment"></div>
+              <div class="comment-buttons">
+                <span class="fa fa-plus"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="hr-little">
+</body>
+</html>

@@ -5,67 +5,176 @@
 
 ///                               *** ANGULAR STUFF ***
 
-var myApp = angular.module('cubantech', ['ngAnimate']);
+var myApp = angular.module('cubantech', ['ngAnimate', 'ngSanitize']);
 
 myApp
   .controller('cubantechController', [
     '$scope',
     '$http',
     '$window',
-    function($scope, $http, $window) {
+    '$sce',
+    function($scope, $http, $window, $sce) {
 
-      var ROUTE = 'translations/';
+      var MEETUP_API_KEY = "18714117384a2a953663a721a636238";
 
-      $scope.COLORS = [
-        "#ef5350",
-        "#4db6ac",
-        "#ff7043",
-        "#ffee58",
-        "#4fc3f7",
-        "#4caf50",
-        "#9575cd"
-      ];
+      /// TODO: Test this and store key in another place!!!
+      $scope.getComments = function getComments(group) {
 
-      $scope.STARS_DESCRIPTORS = [
-        'fa fa-star-o',
-        'fa fa-star-half-o',
-        'fa fa-star'
-      ];
+        var __fetch = function(ev) {
 
-      $scope.eventGroups = [];
+          $http
+            .get('/api/comments', {
+              params : {
+                "event_id" : ev.id,
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
 
-      $scope.location = $window.location;
+              console.log('COMMENTS V2 LIST: ', data);
 
-      /// Lenguaje de preferencia
-      $scope.preferedLanguage = 'en';
+              //$scope.$apply(function() {
 
-      /// Lenguaje seleccionado actualmente (inicialmente el preferido)
-      $scope.lang             = $scope.preferedLanguage;
+                ev.commentList = data.results;
 
-      /// Año actual
-      $scope.thisYear         = (new Date()).getFullYear();
+                for (var i = 0; i < ev.commentList.length; i += 1) {
 
-      /// Lista con los lenguajes cargados
-      $scope.loadedLanguages  = {};
+                  console.log('HELLO', ev.commentList[i]);
 
-      /// Escritura correcta de cada lenguaje
-      $scope.langMap = {
-        en : "English",
-        gb : "English",
-        es : "Español",
-        pt : "Português",
-        fr : "Français"
-      };
+                  if ( !!ev.commentList[i].member_id ) {
+                    ev.commentList[i].img = '/api/photos?photo_id=' + ev.commentList[i].member_id;
+                  } else {
+                    ev.commentList[i].img = $scope.DEFAULT_AVATAR;
+                  }
 
-      /// Lista de lenguajes disponibles
-      $scope.langList = [ "en", "es" ];
+                }
 
-      $scope.visual =  {
-        marketing : {
-          height : "350px",
-          display : "grid"
+                $scope.processEvent(ev);
+
+              //});
+
+            })
+            .error(function(err) {
+              console.log('getComments ERROR: ', err);
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
         }
+
       };
+
+      $scope.getRatings = function getRatings(event) {
+
+        $http
+          .get('http://api.meetup.com/2/event_ratings', {
+            "event_id" : event.id,
+            "key" : MEETUP_API_KEY
+          })
+          .success(function(data) {
+
+            console.log('RATINGS LIST: ', data);
+
+          })
+          .error(function(err) {
+            console.log('getRatings ERROR: ', err);
+          })
+
+      };
+
+      $scope.getEvents = function getEvents(status) {
+
+        $http
+          .get('/api/events', {
+            params : {
+              "group_urlname" : "cubantech",
+              "status" : status,
+              "key" : MEETUP_API_KEY
+            }
+          })
+          .success(function(data) {
+
+            //console.log('EVENTS LIST: ', data);
+
+            $scope.eventGroups = $scope.eventGroups || [];
+
+            //console.log(status.toUpperCase() + ' EVENTS');
+
+            var eventGroup = {
+              groupName : status.toUpperCase() + ' EVENTS',
+              eventList : data.results
+            };
+
+            $scope.eventGroups.push(eventGroup);
+
+            //$scope.$apply(function() {
+
+            var obj = getQueryParameters();
+
+            obj.group = ~~obj.group;
+            obj.model = ~~obj.model;
+
+            //console.log(obj, $scope.eventGroups);
+
+            if ( obj.group < $scope.eventGroups.length ) {
+              if ( obj.model < $scope.eventGroups[ obj.group ].eventList.length ) {
+                $scope.detailEvent = $scope.eventGroups[ obj.group ].eventList[ obj.model ];
+                //console.log('detailEvent: ', $scope.detailEvent);
+              }
+            }
+
+            $scope.getComments(eventGroup);
+              /// $scope.getRatings(data.results[0]);
+
+            //});
+
+          })
+          .error(function(err) {
+            console.log('getEvents ERROR', err);
+          });
+
+      };
+
+      $scope.getEvents('past');
+
+      $scope.getMembers = function getMembers() {
+
+        $http
+          .get('/api/members')
+          .success(function(data) {
+
+            console.log('MEMBERS LIST:', data);
+
+            var len = data.results.length;
+
+            for (var i = 0; i < len; i += 1) {
+
+              if ( !!data.results[i].photo ) {
+                data.results[i].img = '/api/photos?photo_id=' + data.results[i].photo.photo_id;
+              } else {
+                data.results[i].img = $scope.DEFAULT_AVATAR;
+              }
+
+              if ( !data.results[i].description ) {
+
+                data.results[i].description = 'I love CubanTech';
+
+              }
+
+            }
+
+            $scope.team = data.results;
+
+          })
+          .error(function(err) {
+            console.log('getMembers ERROR: ', err);
+          });
+
+      };
+
+      $scope.getMembers();
 
       $scope.$watch('lang', function() {
 
@@ -110,73 +219,69 @@ myApp
 
       });
 
+      var ROUTE = 'translations/';
+
+      $scope.COLORS = [
+        "#ef5350",
+        "#4db6ac",
+        "#ff7043",
+        "#ffee58",
+        "#4fc3f7",
+        "#4caf50",
+        "#9575cd"
+      ];
+
+      $scope.STARS_DESCRIPTORS = [
+        'fa fa-star-o',
+        'fa fa-star-half-o',
+        'fa fa-star'
+      ];
+
+      $scope.DEFAULT_AVATAR = 'img/8.png';
+
+      $scope.eventGroups = [];
+
+      $scope.detailEvent = {};
+
+      $scope.location = $window.location;
+
+      /// Lenguaje de preferencia
+      $scope.preferedLanguage = 'en';
+
+      /// Lenguaje seleccionado actualmente (inicialmente el preferido)
+      $scope.lang             = $scope.preferedLanguage;
+
+      /// Año actual
+      $scope.thisYear         = (new Date()).getFullYear();
+
+      /// Lista con los lenguajes cargados
+      $scope.loadedLanguages  = {};
+
+      /// Escritura correcta de cada lenguaje
+      $scope.langMap = {
+        en : "English",
+        gb : "English",
+        es : "Español",
+        pt : "Português",
+        fr : "Français"
+      };
+
+      $scope.general = {};
+
+      /// Lista de lenguajes disponibles
+      //$scope.langList = [ "en", "es" ];
+      $scope.langList = [ "en" ];
+
+      $scope.visual =  {
+        marketing : {
+          height : "350px",
+          display : "grid"
+        }
+      };
+
       $scope.useLanguage = function useLanguage(lng) {
 
         $scope.lang = lng;
-
-      };
-
-      $scope.nodeTemplate = function nodeTemplate(data) {
-
-        /**
-
-          @params: data
-
-          data:
-            - name          -->      Nombre de la persona
-            - title         -->      Cargo
-            - avatar        -->      Avatar
-            - email         -->      Correo electronico
-            - twitter       -->      Cuenta de twitter
-            - linkedin      -->      Cuenta de linkedin
-
-        //*/
-
-        data.avatar = data.avatar || "img/anonimUser.png";
-        data.email = data.email || '';
-        data.twitter = data.twitter || '';
-        data.linkedin = data.linkedin || '';
-        data.description = data.description || 'no description available';
-
-        return `
-          <div class="orgComponent col-xs-1">
-            <div class="row">
-              <div class="col-xs-12 featurette-container">
-                <img src="${data.avatar}" value="${data.avatar}" class="orgAvatar" data-toggle="modal" data-target="#myModal">
-              </div>
-              <div class="col-xs-12 orgName" value="${data.name}">
-                <span>${data.name}</span>
-              </div>
-              <div class="col-xs-12 orgCharge" value="${data.title}">
-                <span>${data.title}</span>
-              </div>
-              <div class="col-xs-12 orgContacts">
-                <ul class="col-xs-12">
-                  <li class="orgIcon fa fa-envelope col-xs-4">
-                    <span class="orgIconDescriptor" value="${data.email}"></span>
-                  </li>
-                  <li class="orgIcon fa fa-twitter col-xs-4">
-                    <span class="orgIconDescriptor" value="${data.twitter}"></span>
-                  </li>
-                  <li class="orgIcon fa fa-linkedin col-xs-4">
-                    <span class="orgIconDescriptor" value="${data.linkedin}"></span>
-                  </li>
-                </ul>
-              </div>
-              <div class="hidden orgDescription">
-                ${data.description}
-              </div>
-            </div>
-          </div>`;
-      };
-
-      $scope.contactTemplate = function contactTemplate(data) {
-
-        return `
-          <li class="orgIcon fa fa-${data.type}">
-            <span class="modal-usercontact">${data.value}</span>
-          </li>
-        `;
 
       };
 
@@ -187,60 +292,6 @@ myApp
         for (var i in dict) {
 
           $scope[ i.toString() ] = dict[i];
-
-        }
-
-        var org = $('#organigram');
-
-        if (org.length > 0) {
-
-          org.html('');
-
-          var xxx = org.orgchart({
-            data         : $scope.organigram,
-            nodeTemplate : $scope.nodeTemplate
-          });
-
-          $('.orgAvatar').click(function(e) {
-
-            var __root = e.target.parentElement.parentElement;
-
-            var avatar   = $(__root).find('.orgAvatar').attr('value');
-            var name     = $(__root).find('.orgName').attr('value');
-            var charge   = $(__root).find('.orgCharge').attr('value');
-            var desc     = $(__root).find('.orgDescription').html().trim();
-            var email    = $(__root)
-                              .find('.orgIcon.fa-envelope')
-                              .find('.orgIconDescriptor')
-                              .attr('value');
-
-            var twitter  = $(__root)
-                              .find('.orgIcon.fa-twitter')
-                              .find('.orgIconDescriptor')
-                              .attr('value');
-
-            var linkedin = $(__root)
-                              .find('.orgIcon.fa-linkedin')
-                              .find('.orgIconDescriptor')
-                              .attr('value');
-
-            $scope.$apply(function() {
-
-              $scope.userSelected = {
-                name        : name,
-                charge      : charge,
-                avatar      : avatar,
-                description : desc,
-                contacts    : {
-                  envelope : email,
-                  twitter  : twitter || "",
-                  linkedin : linkedin || ""
-                }
-              };
-
-            });
-
-          });
 
         }
 
@@ -297,34 +348,39 @@ myApp
 
       $scope.processEvent = function processEvent(event) {
 
-        //console.log(event);
+        event.detailBtn = event.detailBtn || "See Program";
 
-        var part = Number(event.mean);
-        var total = Number(event.total);
-        var divs = 5;
-        var factor = total / divs;
+        if ( event.status === 'past' && !!event.rating === true ) {
 
-        var len = $scope.STARS_DESCRIPTORS.length;
+          var part = Number(event.rating.average);
+          var total = Number(event.total || 5);
+          var divs = 5;
+          var factor = total / divs;
 
-        var lv = $scope.getLevel(part, 0, total, divs);
+          var len = $scope.STARS_DESCRIPTORS.length;
 
-        event.rating = ' '.repeat(divs).split(' ');
-        event.rating.pop();
+          var lv = $scope.getLevel(part, 0, total, divs);
 
-        for (var i = 0; i < lv; i += 1) {
-          event.rating[i] = $scope.STARS_DESCRIPTORS[ len - 1 ];
-        }
+          event.stars = ' '.repeat(divs).split(' ');
 
-        //console.log(lv);
+          for (var i = 0; i < lv; i += 1) {
+            event.stars[i] = $scope.STARS_DESCRIPTORS[ len - 1 ];
+          }
 
-        var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, len);
+          //console.log(lv);
 
-        //console.log(lv1);
+          var lv1 = $scope.getLevel(part, lv * factor, (lv + 1) * factor, len);
 
-        event.rating[ lv ] = $scope.STARS_DESCRIPTORS[ lv1 ];
+          //console.log(lv1);
 
-        for (var i = lv + 1; i < divs; i += 1) {
-          event.rating[i] = $scope.STARS_DESCRIPTORS[ 0 ];
+          event.stars[ lv ] = $scope.STARS_DESCRIPTORS[ lv1 ];
+
+          for (var i = lv + 1; i < divs; i += 1) {
+            event.stars[i] = $scope.STARS_DESCRIPTORS[ 0 ];
+          }
+
+          event.stars = event.stars.slice(0, divs);
+
         }
 
         event.commentList = event.commentList || [];
@@ -348,6 +404,8 @@ myApp
           $scope.general.commentedThisMeetup
         ].join(' ');
 
+        event.program = [];
+
       };
 
       $scope.rateEvent = function rateEvent(event, id) {
@@ -367,6 +425,8 @@ myApp
       };
 
       $scope.redirectTo = function redirectTo(dir, params) {
+
+        console.log('redirectTo: ', dir, params);
 
         var res = dir + '?';
 
@@ -612,153 +672,28 @@ myApp.directive('gallery', function() {
 
 });
 
-myApp.directive('event', function() {
+myApp.directive('comment', function() {
 
   return {
 
-    template : [
-      `
-    <div class="event">
-      <div class="panel panel-default event-card">
-        <div class="panel-body">
-          <div class="row event-header">
-            <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
-            <div class="rating col-xs-5 pull-right">
-              <span class="icon {{event.rating[0]}}"></span>
-              <span class="icon {{event.rating[1]}}"></span>
-              <span class="icon {{event.rating[2]}}"></span>
-              <span class="icon {{event.rating[3]}}"></span>
-              <span class="icon {{event.rating[4]}}"></span>
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="row">
-            <div class="col-xs-12 event-agenda">
-              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-                <div ng-show="index != 0" class="event-descriptor"> | </div>
-                <div class="event-descriptor">
-                  <span class="icon fa fa-{{descriptor.type}}"></span>
-                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="event-content col-xs-12" ng-bind="event.content"></div>
-          </div>
-        </div>
-        <div class="separator"></div>
-        <div class="row">
-          <div class="col-xs-12">
-            <h3 class="text-center"> Event program: </h3>
-            <ul class="col-xs-12">
-              <li class="event-program col-xs-6" ng-repeat="program in event.program">
-                <div class="col-xs-12">
-                  <span class="col-xs-12 fa fa-bullhorn" ng-bind="program.title"></span>
-                  <span class="col-xs-12 fa fa-clock-o" ng-bind="program.time"></span>
-                  <span class="col-xs-12 fa fa-user-o" ng-bind="program.name"></span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="separator"></div>
-        <div class="row rateUs">
-          <div class="text-right col-xs-9" ng-bind="$parent.general.rateEvent"></div>
-          <div class="rating col-xs-3">
-            <span class="icon pointer {{event.rated[0]}}" ng-click="$parent.rateEvent(event, 1)"></span>
-            <span class="icon pointer {{event.rated[1]}}" ng-click="$parent.rateEvent(event, 2)"></span>
-            <span class="icon pointer {{event.rated[2]}}" ng-click="$parent.rateEvent(event, 3)"></span>
-            <span class="icon pointer {{event.rated[3]}}" ng-click="$parent.rateEvent(event, 4)"></span>
-            <span class="icon pointer {{event.rated[4]}}" ng-click="$parent.rateEvent(event, 5)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="event comment-long" ng-include="'comment.htm'"></div>
-      <div class="separator"></div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h3 class="text-left">Leave your comment:</h3>
-          <form action="" class="col-xs-12" role="form">
-            <div class="form-group">
-              <input type="text" class="col-xs-12 form-control" placeholder="Name..." required>
-            </div>
-            <div class="form-group">
-              <input type="email" class="col-xs-12 form-control" placeholder="Email..." required>
-            </div>
-            <div class="form-group">
-              <input type="text" class="col-xs-12 form-control" placeholder="Web...">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id="" cols="30" rows="10" required></textarea>
-            </div>
-            <div class="event-detail">
-              <input type="submit" class="btn pull-left" value="{{$parent.general.publishComment}}"/>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-      `
-    ].join(' '),
-    replace : true,
+    templateUrl : '/templates/comment.htm',
+    replace : false,
     restrict : "E",
-    scope : {
-      group : "@",
-      model : "@"
-    },
     link : function(scope, element, attrs, ctrl, transcludeFn) {
-
-      //console.log(scope.$parent);
 
       scope.$parent.$watch('eventGroups', function() {
 
-        var src = window.location.search;
-        var obj = {};
+        // console.log('EVENT_COMMENT: ', scope.event);
 
-        src = src.substr(1, src.length);
+        if ( !!scope.event.commentList === true ) {
 
-        src = src.split('&');
+          scope.DEFAULT_AVATAR = scope.$parent.DEFAULT_AVATAR;
 
-        src.forEach(function(e) {
-          e = e.split('=');
-          obj[ e[0] ] = e[1];
-        });
+          var commentList = scope.event.commentList;
+          var len = commentList.length;
 
-        //console.log(src, obj);
-
-        if ( scope.hasOwnProperty('group') === false ||
-             scope.hasOwnProperty('model') === false ) {
-          if ( ('group' in obj) && ('model' in obj) ) {
-            scope.group = ~~obj.group;
-            scope.model = ~~obj.model;
-          } else {
-            console.log('group or model not in pbject');
-            window.location.href = '/';
-          }
-        } else {
-          scope.group = ~~scope.group;
-          scope.model = ~~scope.model;
-        }
-
-        if ( Array.isArray(scope.$parent.eventGroups) ) {
-
-          //console.log(scope.$parent.eventGroups);
-
-          if ( scope.group < scope.$parent.eventGroups.length ) {
-            if ( scope.model < scope.$parent.eventGroups[ scope.group ].eventList.length ) {
-
-              scope.event = scope.$parent.eventGroups[ scope.group ].eventList[ scope.model ];
-
-              scope.$parent.processEvent(scope.event);
-
-            } else {
-              console.log('Length exceeded!!! 1');
-              //window.location.href = '/';
-            }
-          } else {
-            console.log('Length exceeded!!! 2');
-            //window.location.href = '/';
+          for (var i = 0; i < len; i += 1) {
+            commentList[i].img = commentList[i].img || scope.DEFAULT_AVATAR;
           }
 
         }
@@ -770,7 +705,139 @@ myApp.directive('event', function() {
 
 });
 
+myApp.directive('event', function() {
+
+  return {
+
+    templateUrl : '/templates/event.htm',
+    replace : true,
+    restrict : "E",
+    scope : {
+      group : "@",
+      model : "@",
+      event : "="
+    },
+    link : function(scope, element, attrs, ctrl, transcludeFn) {
+
+      if ( window.location.pathname !== '/events' ) {
+
+        scope.group = scope.group || 0;
+        scope.model = scope.model || 0;
+        scope.event = scope.event || {};
+
+        scope.$parent.$watch('eventGroups', function() {
+
+          //console.log('EVENT_SCOPE: ', scope);
+
+          if ( !!scope.event === true && Object.keys(scope.event).length > 0 ) {
+            scope.$parent.processEvent(scope.event);
+            return;
+          }
+
+          var obj = getQueryParameters();
+
+          //console.log(src, obj);
+
+          if ( scope.hasOwnProperty('group') === false ||
+               scope.hasOwnProperty('model') === false) {
+            if ( ('group' in obj) && ('model' in obj) ) {
+              scope.group = ~~obj.group;
+              scope.model = ~~obj.model;
+              //console.log('Group and Model added to scope', scope.group, scope.model);
+            } else {
+              //console.log('group or model not in project');
+              //window.location.href = '/';
+            }
+          } else {
+            if ( !scope.group || !scope.model ) {
+              if ( ('group' in obj) && ('model' in obj) ) {
+                scope.group = ~~obj.group;
+                scope.model = ~~obj.model;
+                //console.log('Group and Model added to scope1', scope.group, scope.model);
+              } else {
+                console.log('group or model not in project1');
+                //window.location.href = '/';
+              }
+            } else {
+              //console.log('Group and Model in scope');
+              scope.group = ~~scope.group;
+              scope.model = ~~scope.model;
+            }
+          }
+
+          if ( Array.isArray(scope.$parent.eventGroups) ) {
+
+            //console.log('eventGroups is an Array');
+
+            //console.log('eventGroups', scope.$parent.eventGroups.length);
+
+            if ( scope.group < scope.$parent.eventGroups.length ) {
+
+              //console.log('eventList', scope.$parent.eventGroups[ scope.group ].eventList.length);
+
+              if ( scope.model < scope.$parent.eventGroups[ scope.group ].eventList.length ) {
+
+                scope.event = scope.$parent.eventGroups[ scope.group ].eventList[ scope.model ];
+
+                scope.$parent.processEvent(scope.event);
+
+              } else {
+                //console.log('Length exceeded!!! 1');
+                //window.location.href = '/';
+              }
+            } else {
+              //console.log('Length exceeded!!! 2');
+              //window.location.href = '/';
+            }
+
+          } else {
+
+            //console.log('eventList is not an Array');
+
+          }
+
+        });//*/
+
+      } else {
+
+        scope.$parent.$watch('detailEvent', function() {
+
+          //console.log(scope.$parent);
+
+          scope.event = scope.$parent.detailEvent;
+
+          //console.log('Changed event: ', scope.event);
+
+          scope.$parent.processEvent(scope.event);
+
+        });
+
+      }
+
+    }
+  };
+
+});
+
 ///                    *** NON-ANGULAR STUFF ***
+
+function getQueryParameters() {
+
+  var src = window.location.search;
+  var obj = {};
+
+  src = src.substr(1, src.length);
+
+  src = src.split('&');
+
+  src.forEach(function(e) {
+    e = e.split('=');
+    obj[ e[0] ] = e[1];
+  });
+
+  return obj;
+
+}
 
 (function() {
   Chart.defaults.global.legend.labels.boxWidth = 12;

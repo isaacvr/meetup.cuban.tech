@@ -78,8 +78,11 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="user in team">
           <div class="featurette-panel panel panel-default" ng-style="visual.marketing">
-            <div class="center-block featurette-container">
-              <img src="{{user.img}}" class="img-thumbnail img-circle featurette-icon"></img>
+            <div class="center-block featurette-container member-avatar">
+              <picture>
+                <source srcset="{{user.img}}">
+                <img src="{{DEFAULT_AVATAR}}" alt="" class="col-xs-3">
+              </picture>
             </div>
             <h2 class="team-username" ng-bind="user.name"></h2>
             <div class="team-user-description" ng-bind="user.description"></div>
@@ -126,6 +129,7 @@
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -188,77 +192,6 @@
 
     <script type="text/ng-template" id="carousel.htm">
       <carousel model="event"></carousel>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="comment.htm">
-      <div class="panel panel-default event-card-mini">
-        <div class="panel-body">
-          <div class="row">
-            <div class="event-content">
-              <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
-                <img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar">
-                <div class="col-xs-9">
-                  <div class="comment-inner">
-                    <span class="comment-user" ng-bind="comment.name"></span><br>
-                    <span class="panel-caret-left">
-                      <span class="panel-caret-inner"></span>
-                    </span>
-                    <div class="comment-content" ng-bind="comment.comment"></div>
-                    <div class="comment-buttons">
-                      <span class="fa fa-plus"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="event.htm">
-      <p class="hidden" ng-bind="processEvent(event)"></p>
-      <div class="panel panel-default event-card">
-        <div class="panel-body">
-          <div class="row event-header">
-            <h2 class="col-xs-7 event-title" ng-bind="event.title"></h2>
-            <div class="rating col-xs-5 pull-right">
-              <span class="icon {{event.rating[0]}}"></span>
-              <span class="icon {{event.rating[1]}}"></span>
-              <span class="icon {{event.rating[2]}}"></span>
-              <span class="icon {{event.rating[3]}}"></span>
-              <span class="icon {{event.rating[4]}}"></span>
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="row">
-            <div class="col-xs-12 event-agenda">
-              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-                <div ng-show="index != 0" class="event-descriptor"> | </div>
-                <div class="event-descriptor">
-                  <span class="icon fa fa-{{descriptor.type}}"></span>
-                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="event-content col-xs-12" ng-bind="event.content"></div>
-          </div>
-          <div class="row">
-            <div class="event-buttons col-xs-12">
-              <div class="event-comments pull-left">
-                <a href="{{event.href}}">{{event.comments}}<span class="fa fa-commenting-o"></span></a>
-              </div>
-              <div class="event-detail pull-right">
-                <a class="btn btn-lg btn-default" href="#" role="button" ng-bind="event.detailBtn"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <hr class="hr-little">
     </script>
 

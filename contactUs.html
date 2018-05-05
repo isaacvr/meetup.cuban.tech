@@ -156,6 +156,7 @@
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -218,33 +219,6 @@
 
     <script type="text/ng-template" id="carousel.htm">
       <carousel model="event"></carousel>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="comment.htm">
-      <div class="panel panel-default event-card-mini">
-        <div class="panel-body">
-          <div class="row">
-            <div class="event-content">
-              <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
-                <img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar">
-                <div class="col-xs-9">
-                  <div class="comment-inner">
-                    <span class="comment-user" ng-bind="comment.name"></span><br>
-                    <span class="panel-caret-left">
-                      <span class="panel-caret-inner"></span>
-                    </span>
-                    <div class="comment-content" ng-bind="comment.comment"></div>
-                    <div class="comment-buttons">
-                      <span class="fa fa-plus"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <hr class="hr-little">
     </script>
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="event">
+    <div class="panel panel-default event-card-mini">
+      <div class="panel-body">
+        <div class="row event-header">
+          <h2 class="event-title col-xs-12" ng-style="{'background-color' : event.headerColor }">
+            <span class="fa fa-{{event.icon}}"></span>
+            {{event.title}}
+          </h2>
+        </div>
+        <div class="row">
+          <div class="event-content">
+            <canvas height="300" id="{{event.title}}" ng-bind="createDataset(event)"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="hr-little">
+</body>
+</html>

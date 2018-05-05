@@ -15,15 +15,18 @@
   "navBar" : [
     {
       "label" : "Eventos",
-      "href" : "/"
+      "href" : "/",
+      "regexp" : "(events)?"
     },
     {
       "label" : "Quienes Somos",
-      "href" : "/aboutUs"
+      "href" : "/aboutUs",
+      "regexp" : "aboutUs"
     },
     {
       "label" : "Contáctenos",
-      "href" : "/contactUs"
+      "href" : "/contactUs",
+      "regexp" : "contactUs"
     }
   ],
   "carousel" : [

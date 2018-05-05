@@ -81,43 +81,38 @@
       </a>
     </div>
 
-    <!--div ng-model="statistics" ng-include="'carousel.htm'"></div-->
-
     <div class="container">
       <div class="eventList col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <div ng-repeat="(index, group) in eventGroups" class="event-group">
+        <div ng-repeat="(index, group) in eventGroups" class="event-group" ng-show="group.eventList.length > 0">
           <div class="event-group-name">
             <h1 ng-bind="group.groupName"></h1>
           </div>
-          <div class="event" ng-repeat="(index1, event) in group.eventList" ng-include="'event.htm'">
-          </div>
-        </div>
-        <div class="col-xs-12 text-center">
-          <ul class="pagination">
-            <li><a href="">1</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">2</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">3</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">4</a></li>
-            <li><a class="pagination-separator" href="">/</a></li>
-            <li><a href="">5</a></li>
-          </ul>
+          <event ng-repeat="(index1, event) in group.eventList" group="{{index}}" model="{{index1}}" event="event"></event>
         </div>
       </div>
-      <!--div class="col-xs-1">
-        <div class="vertical-separator"></div>
-      </div-->
       <div class="eventList col-md-4 col-lg-4 visible-lg visible-md">
         <div ng-repeat="group in statistics" class="event-group">
           <div class="event-group-name">
             <h1 ng-bind="group.groupName"></h1>
           </div>
           <div>
-            <div class="event" ng-repeat="event in group.eventList" ng-include="event.template"></div>
+            <div class="event-card expanded" ng-repeat="(index1, event) in group.eventList" ng-include="'templates/' + event.template" group="{{index}}" model="{{index1}}" event="event">
+            </div>
           </div>
         </div>
+      </div>
+      <div class="col-xs-12 text-center">
+        <ul class="pagination">
+          <li><a href="">1</a></li>
+          <li><a class="pagination-separator" href="">/</a></li>
+          <li><a href="">2</a></li>
+          <li><a class="pagination-separator" href="">/</a></li>
+          <li><a href="">3</a></li>
+          <li><a class="pagination-separator" href="">/</a></li>
+          <li><a href="">4</a></li>
+          <li><a class="pagination-separator" href="">/</a></li>
+          <li><a href="">5</a></li>
+        </ul>
       </div>
     </div>
 
@@ -160,142 +155,12 @@
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/holder.min.js"></script>
     <script src="js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- ng templates -->
-    <script type="text/ng-template" id="chart.htm">
-      <div class="event">
-        <div class="panel panel-default event-card-mini">
-          <div class="panel-body">
-            <div class="row event-header">
-              <h2 class="event-title col-xs-12" ng-style="{'background-color' : event.headerColor }">
-                <span class="fa fa-{{event.icon}}"></span>
-                {{event.title}}
-              </h2>
-            </div>
-            <div class="row">
-              <div class="event-content">
-                <canvas height="300" id="{{event.title}}" ng-bind="createDataset(event)"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="table.htm">
-      <div class="event">
-        <div class="panel panel-default event-card-mini">
-          <div class="panel-body">
-            <div class="row event-header">
-              <h2 class="event-title col-xs-12" ng-style="{'background-color' : event.headerColor }">
-                <span class="fa fa-{{event.icon}}"></span>
-                {{event.title}}
-              </h2>
-            </div>
-            <div class="row">
-              <div class="event-content">
-                <table class="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th ng-repeat="th in event.head" ng-bind="th"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="tr in event.body">
-                      <td ng-repeat="td in tr" ng-bind="td"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="carousel.htm">
-      <carousel model="event"></carousel>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="comment.htm">
-      <div class="panel panel-default event-card-mini">
-        <div class="panel-body">
-          <div class="row">
-            <div class="event-content">
-              <div class="col-xs-12 comment" ng-repeat="comment in event.commentList">
-                <img src="{{comment.img}}" alt="" class="col-xs-3 comment-avatar">
-                <div class="col-xs-9">
-                  <div class="comment-inner">
-                    <span class="comment-user" ng-bind="comment.name"></span><br>
-                    <span class="panel-caret-left">
-                      <span class="panel-caret-inner"></span>
-                    </span>
-                    <div class="comment-content" ng-bind="comment.comment"></div>
-                    <div class="comment-buttons">
-                      <span class="fa fa-plus"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <script type="text/ng-template" id="event.htm">
-      <p class="hidden" ng-bind="processEvent(event)"></p>
-      <div class="panel panel-default event-card">
-        <div class="panel-body">
-          <div class="row event-header">
-            <h2 class="col-xs-7 event-title" ng-bind="event.title" ng-click="redirectTo('events', { 'group' : index, 'model' : index1})"></h2>
-            <div class="rating col-xs-5 pull-right">
-              <span class="icon {{event.rating[0]}}"></span>
-              <span class="icon {{event.rating[1]}}"></span>
-              <span class="icon {{event.rating[2]}}"></span>
-              <span class="icon {{event.rating[3]}}"></span>
-              <span class="icon {{event.rating[4]}}"></span>
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="row">
-            <div class="col-xs-12 event-agenda">
-              <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-                <div ng-show="index != 0" class="event-descriptor"> | </div>
-                <div class="event-descriptor">
-                  <span class="icon fa fa-{{descriptor.type}}"></span>
-                  <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="event-content col-xs-12" ng-bind="event.content"></div>
-          </div>
-          <div class="row">
-            <div class="event-buttons col-xs-12">
-              <div class="event-comments pull-left">
-                <p>{{event.comments}}<span class="fa fa-commenting-o"></span></p>
-              </div>
-              <div class="event-detail pull-right">
-                <a class="btn btn-lg btn-default" ng-click="redirectTo('events', { 'group' : index, 'model' : index1})" role="button" ng-bind="event.detailBtn"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr class="hr-little">
-    </script>
-
-    <!-- end ng templates -->
   </body>
 </html>
