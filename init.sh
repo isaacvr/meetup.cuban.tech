@@ -1,1 +1,1 @@
-@nodemon jsonServer.js
+nodemon jsonServer.js

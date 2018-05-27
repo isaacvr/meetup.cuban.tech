@@ -17,208 +17,6 @@ myApp
 
       var MEETUP_API_KEY = "18714117384a2a953663a721a636238";
 
-      /// TODO: Test this and store key in another place!!!
-      $scope.getComments = function getComments(group) {
-
-        var __fetch = function(ev) {
-
-          $http
-            .get('/api/comments', {
-              params : {
-                "event_id" : ev.id,
-                "key" : MEETUP_API_KEY
-              }
-            })
-            .success(function(data) {
-
-              console.log('COMMENTS V2 LIST: ', data);
-
-              //$scope.$apply(function() {
-
-                ev.commentList = data.results;
-
-                for (var i = 0; i < ev.commentList.length; i += 1) {
-
-                  console.log('HELLO', ev.commentList[i]);
-
-                  if ( !!ev.commentList[i].member_id ) {
-                    ev.commentList[i].img = '/api/photos?photo_id=' + ev.commentList[i].member_id;
-                  } else {
-                    ev.commentList[i].img = $scope.DEFAULT_AVATAR;
-                  }
-
-                }
-
-                $scope.processEvent(ev);
-
-              //});
-
-            })
-            .error(function(err) {
-              console.log('getComments ERROR: ', err);
-            });
-
-        };
-
-        for (var i = 0; i < group.eventList.length; i += 1) {
-          __fetch( group.eventList[i] );
-        }
-
-      };
-
-      $scope.getRatings = function getRatings(event) {
-
-        $http
-          .get('http://api.meetup.com/2/event_ratings', {
-            "event_id" : event.id,
-            "key" : MEETUP_API_KEY
-          })
-          .success(function(data) {
-
-            console.log('RATINGS LIST: ', data);
-
-          })
-          .error(function(err) {
-            console.log('getRatings ERROR: ', err);
-          })
-
-      };
-
-      $scope.getEvents = function getEvents(status) {
-
-        $http
-          .get('/api/events', {
-            params : {
-              "group_urlname" : "cubantech",
-              "status" : status,
-              "key" : MEETUP_API_KEY
-            }
-          })
-          .success(function(data) {
-
-            //console.log('EVENTS LIST: ', data);
-
-            $scope.eventGroups = $scope.eventGroups || [];
-
-            //console.log(status.toUpperCase() + ' EVENTS');
-
-            var eventGroup = {
-              groupName : status.toUpperCase() + ' EVENTS',
-              eventList : data.results
-            };
-
-            $scope.eventGroups.push(eventGroup);
-
-            //$scope.$apply(function() {
-
-            var obj = getQueryParameters();
-
-            obj.group = ~~obj.group;
-            obj.model = ~~obj.model;
-
-            //console.log(obj, $scope.eventGroups);
-
-            if ( obj.group < $scope.eventGroups.length ) {
-              if ( obj.model < $scope.eventGroups[ obj.group ].eventList.length ) {
-                $scope.detailEvent = $scope.eventGroups[ obj.group ].eventList[ obj.model ];
-                //console.log('detailEvent: ', $scope.detailEvent);
-              }
-            }
-
-            $scope.getComments(eventGroup);
-              /// $scope.getRatings(data.results[0]);
-
-            //});
-
-          })
-          .error(function(err) {
-            console.log('getEvents ERROR', err);
-          });
-
-      };
-
-      $scope.getEvents('past');
-
-      $scope.getMembers = function getMembers() {
-
-        $http
-          .get('/api/members')
-          .success(function(data) {
-
-            console.log('MEMBERS LIST:', data);
-
-            var len = data.results.length;
-
-            for (var i = 0; i < len; i += 1) {
-
-              if ( !!data.results[i].photo ) {
-                data.results[i].img = '/api/photos?photo_id=' + data.results[i].photo.photo_id;
-              } else {
-                data.results[i].img = $scope.DEFAULT_AVATAR;
-              }
-
-              if ( !data.results[i].description ) {
-
-                data.results[i].description = 'I love CubanTech';
-
-              }
-
-            }
-
-            $scope.team = data.results;
-
-          })
-          .error(function(err) {
-            console.log('getMembers ERROR: ', err);
-          });
-
-      };
-
-      $scope.getMembers();
-
-      $scope.$watch('lang', function() {
-
-        //console.log($scope.lang);
-
-        if ( $scope.loadedLanguages.hasOwnProperty($scope.lang) === true ) {
-
-          $scope.updateLanguage($scope.lang);
-
-        } else {
-
-          if ( $scope.langList.indexOf($scope.lang) > -1 ) {
-            $http
-              .get(ROUTE + $scope.lang + '.json')
-              .success(function(data) {
-
-                //console.log(data);
-
-                $scope.loadedLanguages[ $scope.lang ] = data;
-
-                $scope.updateLanguage($scope.lang);
-
-              })
-              .error(function() {
-                $scope.lang = $scope.preferedLanguage;
-              });
-          } else {
-            $scope.lang = $scope.preferedLanguage;
-            $scope.updateLanguage($scope.lang);
-          }
-
-        }
-
-      });//*/
-
-      $scope.$watch('eventGroups', function() {
-
-        if ( $scope.eventGroups.length > 0 ) {
-          $scope.selectedGroup = $scope.eventGroups[0];
-          $scope.selectedEvent = 0;
-        }
-
-      });
-
       var ROUTE = 'translations/';
 
       $scope.COLORS = [
@@ -278,6 +76,349 @@ myApp
           display : "grid"
         }
       };
+
+      /// TODO: Test this and store key in another place!!!
+      $scope.getComments = function getComments(group) {
+
+        var __fetch = function(ev) {
+
+          $http
+            .get('/api/comments', {
+              params : {
+                "event_id" : ev.id,
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
+
+              //console.log('COMMENTS V2 LIST: ', data);
+
+              //$scope.$apply(function() {
+
+                ev.commentList = data.results;
+
+                for (var i = 0; i < ev.commentList.length; i += 1) {
+
+                  //console.log('HELLO', ev.commentList[i]);
+
+                  if ( !!ev.commentList[i].member_id ) {
+                    ev.commentList[i].img = '/api/photos?photo_id=' + ev.commentList[i].member_id;
+                  } else {
+                    ev.commentList[i].img = $scope.DEFAULT_AVATAR;
+                  }
+
+                }
+
+                $scope.processEvent(ev);
+
+              //});
+
+            })
+            .error(function(err) {
+              //console.log('getComments ERROR: ', err);
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
+        }
+
+      };
+
+      $scope.getEventAttachments = function getEventAttachments(group) {
+
+        var __fetch = function(ev) {
+
+          $http
+            .get('/api/events/' + ev.id + '/attachments/', {
+              params : {
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
+
+              ev.attachments = [];
+
+              for ( var i = 0; i < data.length; i += 1 ) {
+
+                var ext = data[i].split('.');
+                var name = data[i].split('/');
+
+                ext = ext[ ext.length - 1 ];
+                name = name[ name.length - 1 ];
+
+                ev.attachments.push({
+                  url : data[i],
+                  name : name,
+                  extension : ext
+                });
+
+              }
+
+            })
+            .error(function(err) {
+              //console.log('getComments ERROR: ', err);
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
+        }
+
+      };
+
+      $scope.getEventPhotos = function getEventPhotos(group) {
+
+        var __fetch = function(ev) {
+
+          $http
+            .get('/api/events/' + ev.id + '/photos/', {
+              params : {
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
+
+              //console.log('Photos: ', data);
+
+              ev.photos = data;
+
+              if ( data.length > 0 ) {
+
+                setTimeout(function() {
+                  $('#gallery_' + ev.id).lightGallery();
+                }, 500);
+
+              }
+
+            })
+            .error(function(err) {
+              ///console.log('getComments ERROR: ', err);
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
+        }
+
+      };
+
+      $scope.getEventAgenda = function getEventAgenda(group) {
+
+        var __fetch = function(ev) {
+
+          $http
+            .get('/api/events/' + ev.id + '/agenda/', {
+              params : {
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
+              ev.agenda = data;
+            })
+            .error(function(err) {
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
+        }
+
+      };
+
+      $scope.getRatings = function getRatings(event) {
+
+        $http
+          .get('http://api.meetup.com/2/event_ratings', {
+            "event_id" : event.id,
+            "key" : MEETUP_API_KEY
+          })
+          .success(function(data) {
+
+            //console.log('RATINGS LIST: ', data);
+
+          })
+          .error(function(err) {
+            //console.log('getRatings ERROR: ', err);
+          })
+
+      };
+
+      $scope.getEvents = function getEvents(status) {
+
+        $http
+          .get('/api/events', {
+            params : {
+              "group_urlname" : "cubantech",
+              "status" : status,
+              "key" : MEETUP_API_KEY
+            }
+          })
+          .success(function(data) {
+
+            //console.log('EVENTS LIST: ', data);
+
+            $scope.eventGroups = $scope.eventGroups || [];
+
+            //console.log(status.toUpperCase() + ' EVENTS');
+
+            for (var i = 0; i < data.results.length; i += 1) {
+
+              var time = data.results[i].time + data.results[i].utc_offset;
+              var offset = data.results[i].utc_offset;
+              var realTime = time + offset;
+
+              data.results[i].realTime = realTime;
+
+              data.results[i].descriptors = [
+                {
+                  "type" : "calendar",
+                  "content" : moment(realTime).format('DD/MM/YYYY')
+                },
+                {
+                  "type" : "clock-o",
+                  "content" : moment(offset).format('hh:mm a')
+                }
+              ];
+            }
+
+            var eventGroup = {
+              groupName : status.toUpperCase() + ' EVENTS',
+              eventList : data.results
+            };
+
+            $scope.eventGroups.push(eventGroup);
+
+            //$scope.$apply(function() {
+
+            var obj = getQueryParameters();
+
+            //console.log(obj);
+
+            obj.group = ~~obj.group;
+            obj.model = ~~obj.model;
+
+            //console.log(obj, $scope.eventGroups);
+
+            $scope.detailEvent = {};
+
+            for ( var i = 0; i < $scope.eventGroups.length; i += 1 ) {
+              for ( var j = 0; j < $scope.eventGroups[i].eventList.length; j += 1 ) {
+                if ( $scope.eventGroups[i].eventList[j].id == obj.id ) {
+                  $scope.detailEvent = $scope.eventGroups[i].eventList[j];
+                }
+              }
+            }
+
+            /*if ( obj.group < $scope.eventGroups.length ) {
+              if ( obj.model < $scope.eventGroups[ obj.group ].eventList.length ) {
+                $scope.detailEvent = $scope.eventGroups[ obj.group ].eventList[ obj.model ];
+                //console.log('detailEvent: ', $scope.detailEvent);
+              }
+            }*/
+
+            $scope.getComments(eventGroup);
+            $scope.getEventAgenda(eventGroup);
+            $scope.getEventPhotos(eventGroup);
+            $scope.getEventAttachments(eventGroup);
+              /// $scope.getRatings(data.results[0]);
+
+            //});
+
+          })
+          .error(function(err) {
+            //console.log('getEvents ERROR', err);
+          });
+
+      };
+
+      $scope.getEvents('past');
+
+      $scope.getMembers = function getMembers() {
+
+        $http
+          .get('/api/members')
+          .success(function(data) {
+
+            //console.log('MEMBERS LIST:', data);
+
+            var len = data.results.length;
+
+            for (var i = 0; i < len; i += 1) {
+
+              if ( !!data.results[i].photo ) {
+                data.results[i].img = '/api/photos?photo_id=' + data.results[i].photo.photo_id;
+              } else {
+                data.results[i].img = $scope.DEFAULT_AVATAR;
+              }
+
+              if ( !data.results[i].description ) {
+
+                data.results[i].description = 'I love CubanTech';
+
+              }
+
+            }
+
+            $scope.team = data.results;
+
+          })
+          .error(function(err) {
+            //console.log('getMembers ERROR: ', err);
+          });
+
+      };
+
+      $scope.getMembers();
+
+      /// WATCHERS
+
+      $scope.$watch('lang', function() {
+
+        //console.log($scope.lang);
+
+        if ( $scope.loadedLanguages.hasOwnProperty($scope.lang) === true ) {
+
+          $scope.updateLanguage($scope.lang);
+
+        } else {
+
+          if ( $scope.langList.indexOf($scope.lang) > -1 ) {
+            $http
+              .get(ROUTE + $scope.lang + '.json')
+              .success(function(data) {
+
+                //console.log(data);
+
+                $scope.loadedLanguages[ $scope.lang ] = data;
+
+                $scope.updateLanguage($scope.lang);
+
+              })
+              .error(function() {
+                $scope.lang = $scope.preferedLanguage;
+              });
+          } else {
+            $scope.lang = $scope.preferedLanguage;
+            $scope.updateLanguage($scope.lang);
+          }
+
+        }
+
+      });//*/
+
+      $scope.$watch('eventGroups', function() {
+
+        if ( $scope.eventGroups.length > 0 ) {
+          $scope.selectedGroup = $scope.eventGroups[0];
+          $scope.selectedEvent = 0;
+        }
+
+      });
 
       $scope.useLanguage = function useLanguage(lng) {
 
@@ -387,7 +528,7 @@ myApp
 
         var cant = event.commentList.length;
 
-        event.comments = cant + ' ' + $scope.general[( cant != 1 ) ? 'comments' : 'comment' ] + ' ';
+        event.comments = cant;
 
         event.rated = [];
 
@@ -426,7 +567,7 @@ myApp
 
       $scope.redirectTo = function redirectTo(dir, params) {
 
-        console.log('redirectTo: ', dir, params);
+        //console.log('redirectTo: ', dir, params);
 
         var res = dir + '?';
 
@@ -721,8 +862,8 @@ myApp.directive('event', function() {
 
       if ( window.location.pathname !== '/events' ) {
 
-        scope.group = scope.group || 0;
-        scope.model = scope.model || 0;
+        /*//scope.group = scope.group || 0;
+        //scope.model = scope.model || 0;
         scope.event = scope.event || {};
 
         scope.$parent.$watch('eventGroups', function() {
@@ -736,10 +877,7 @@ myApp.directive('event', function() {
 
           var obj = getQueryParameters();
 
-          //console.log(src, obj);
-
-          if ( scope.hasOwnProperty('group') === false ||
-               scope.hasOwnProperty('model') === false) {
+          if ( scope.hasOwnProperty('group') === false || scope.hasOwnProperty('model') === false) {
             if ( ('group' in obj) && ('model' in obj) ) {
               scope.group = ~~obj.group;
               scope.model = ~~obj.model;

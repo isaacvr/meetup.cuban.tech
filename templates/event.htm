@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row event-header">
-        <a href="events?group={{group}}&model={{model}}">
+        <a href="events?id={{event.id}}">
           <h2 class="col-xs-7 event-title" ng-bind="event.name"></h2>
         </a>
         <div class="rating col-xs-5 pull-right" ng-show="event.status == 'past'">
@@ -13,7 +13,6 @@
       <div class="row">
         <div class="col-xs-12 event-agenda">
           <div ng-repeat="(index, descriptor) in event.descriptors" class="event-descriptor">
-            <div ng-show="index != 0" class="event-descriptor"> | </div>
             <div class="event-descriptor">
               <span class="icon fa fa-{{descriptor.type}}"></span>
               <span class="event-descriptor-content" ng-bind="descriptor.content"></span>
@@ -25,24 +24,12 @@
         <div class="event-content col-xs-12" ng-bind-html="event.description"></div>
       </div>
       <div class="row large-hidden">
-        <div class="col-xs-8 comment-counter">
-          <span class="fa fa-commenting-o" ng-bind="event.comments"></span>
+        <div class="comment-counter">
+          <span class="fa fa-commenting-o" ng-bind="event.comments || 0"></span>
         </div>
-      </div>
-    </div>
-    <div class="separator short-hidden"></div>
-    <div class="row event-program short-hidden" ng-show="event.program.length > 0">
-      <div class="col-xs-12">
-        <h3 class="text-center"> Event program: </h3>
-        <ul class="col-xs-12">
-          <li class="event-program col-xs-6" ng-repeat="program in event.program">
-            <div class="col-xs-12">
-              <span class="col-xs-12 fa fa-bullhorn" ng-bind="program.title"></span>
-              <span class="col-xs-12 fa fa-clock-o" ng-bind="program.time"></span>
-              <span class="col-xs-12 fa fa-user-o" ng-bind="program.name"></span>
-            </div>
-          </li>
-        </ul>
+        <div class="picture-counter" ng-show="event.photos.length > 0">
+          <span class="fa fa-picture-o" ng-bind="event.photos.length"></span>
+        </div>
       </div>
     </div>
     <div class="separator short-hidden"></div>
@@ -50,14 +37,71 @@
       <div class="text-right col-xs-9" ng-bind="$parent.general.rateEvent"></div>
       <div class="rating col-xs-3">
         <span ng-repeat="(idx, rt) in event.rated track by $index" class="icon pointer {{event.rated[idx]}}" ng-click="$parent.rateEvent(event, idx)"></span>
-        <!--span class="icon pointer {{event.rated[1]}}" ng-click="$parent.rateEvent(event, 2)"></span>
-        <span class="icon pointer {{event.rated[2]}}" ng-click="$parent.rateEvent(event, 3)"></span>
-        <span class="icon pointer {{event.rated[3]}}" ng-click="$parent.rateEvent(event, 4)"></span>
-        <span class="icon pointer {{event.rated[4]}}" ng-click="$parent.rateEvent(event, 5)"></span-->
       </div>
     </div>
   </div>
+
+  <div class="panel panel-default short-hidden" ng-show="event.agenda.length > 0">
+    <div class="panel-body">
+      <h3 class="text-center"> Agenda: </h3>
+      <ul class="col-xs-12">
+        <li class="event-agenda col-xs-6" ng-repeat="ag in event.agenda">
+          <div class="col-xs-12">
+            <span class="col-xs-12 fa fa-bullhorn" ng-bind="ag.title"></span>
+            <span class="col-xs-12 fa fa-clock-o" ng-bind="ag.time"></span>
+            <span class="col-xs-12 fa fa-user-o" ng-bind="ag.name"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel panel-default short-hidden" ng-show="event.attachments.length > 0">
+    <div class="panel-body">
+      <div class="attachment-container col-xs-4" ng-repeat="at in event.attachments">
+        <div class="attachment" extGroup="{{at.extGroup}}">
+          <div class="col-xs-4 extension" ng-bind="at.extension">
+          </div>
+          <a class="col-xs-8 name" href="{{at.url}}" download ng-bind="at.name">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default short-hidden" ng-show="event.photos.length > 0">
+    <div class="panel-header text-center">
+      <h1 ng-bind="$parent.general.eventPhotos"></h1>
+    </div>
+    <div class="panel-body">
+      <div id="gallery_{{event.id}}" class="lightbox row">
+        <div ng-repeat="photo in event.photos track by $index" data-src="{{photo}}" class="img-preview col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-hide="!!event.showAllPhotos === false && $index >= 4">
+          <div class="lightbox-item">
+            <img src="{{photo}}" alt="" class="col-xs-12">
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-warning" ng-click="event.showAllPhotos = !event.showAllPhotos" ng-bind=" !!event.showAllPhotos?' - ':' + ' " ng-show="event.photos.length > 4"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default short-hidden" ng-show="event.attachments.length > 0">
+    <div class="panel-body">
+      <div class="attachment-container col-xs-4" ng-repeat="at in event.attachments">
+        <div class="attachment" extGroup="{{at.extGroup}}">
+          <div class="col-xs-4 extension" ng-bind="at.extension">
+          </div>
+          <a class="col-xs-8 name" href="{{at.url}}" download ng-bind="at.name">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <comment class="event comment-long short-hidden"></comment>
+
   <div class="separator short-hidden"></div>
   <div class="panel panel-default short-hidden">
     <div class="panel-body">

@@ -310,6 +310,7 @@
     "commentedThisMeetup" : "commented this meetup",
     "hasS" : "has",
     "hasP" : "has",
-    "publishComment" : "Publish Comment"
+    "publishComment" : "Publish Comment",
+    "eventPhotos" : "Event photos"
   }
 }

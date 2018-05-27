@@ -1,0 +1,26 @@
+{
+  "name": "meetup-handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jsonServer.js",
+  "dependencies": {
+    "aproba": "^1.1.2",
+    "axios": "^0.18.0",
+    "cacache": "^9.2.9",
+    "lru-cache": "^4.1.1",
+    "ssri": "^4.1.6",
+    "write": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "meetup",
+    "api",
+    "cubantech"
+  ],
+  "author": "Isaac Vega Rodriguez",
+  "license": "MIT"
+}

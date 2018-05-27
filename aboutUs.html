@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/jquery.orgchart.min.css">
+    <link rel="stylesheet" href="css/lightgallery.min.css">
+    <link rel="stylesheet" href="css/app.min.2.css">
+    <link rel="stylesheet/less" type="text/css" href="css/attachment.less">
     <link href="css/site.css" rel="stylesheet">
 
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -79,10 +82,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="user in team">
           <div class="featurette-panel panel panel-default" ng-style="visual.marketing">
             <div class="center-block featurette-container member-avatar">
-              <picture>
-                <source srcset="{{user.img}}">
-                <img src="{{DEFAULT_AVATAR}}" alt="" class="col-xs-3">
-              </picture>
+              <img src="{{user.img}}" alt="" class="col-xs-3">
             </div>
             <h2 class="team-username" ng-bind="user.name"></h2>
             <div class="team-user-description" ng-bind="user.description"></div>
@@ -128,6 +128,9 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/chart.bundle.min.js"></script>
     <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
+    <script type="text/javascript" src="js/lightgallery-all.min.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/less.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="js/angular-animate.min.js"></script>

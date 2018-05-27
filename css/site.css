@@ -7408,11 +7408,6 @@ hr.dark {
   margin-top: 0px;
 }
 
-.event-agenda {
-  margin-top: 8px;
-  text-align: left;
-}
-
 .event-descriptor-content {
   font-size: 0.9em;
 }
@@ -7517,24 +7512,25 @@ hr.dark {
   padding: 10px;
 }
 
-.event-program {
+.event-agenda {
   list-style: none;
-  padding: 20px 17px;
   border-radius: 2px;
+  margin-top: 8px;
+  text-align: left;
+  font-size: 1.1rem;
 }
 
-.event-program div {
-  border: 1px solid #00000044;
-  padding: 8px 0px;
+.event-agenda div {
+  padding: 2px 10px 2px 0px;
   background-color: #f0f2f2;
 }
 
-.event-program div span {
+.event-agenda div span {
   margin: 3px 0px;
   font-size: 1.4em;
 }
 
-.event-program div span::before {
+.event-agenda div span::before {
   margin: 0px 10px;
   font-size: 1.2em;
 }
@@ -7909,22 +7905,40 @@ hr.dark {
   padding: 0;
 }
 
-.comment-counter {
+.comment-counter,
+.picture-counter {
   text-align: left;
   margin-top: 10px;
   font-size: 1.2em;
-  color: #9b0707;
   font-weight: bold;
   text-decoration: underline;
   cursor: default;
+  display: inline;
+  float: left;
 }
 
-.comment-counter span {
+.comment-counter {
+  color: #9b0707;
 }
 
-.comment-counter span::before {
+.picture-counter {
+  color: #0028af;
+}
+
+.comment-counter span::before,
+.picture-counter span::before {
   margin-right: 5px;
   font-size: 1.2em;
   margin-left: 10px;
 }
 
+.img-preview {
+  margin: 10px 0px;
+}
+
+.img-preview img {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.40);
+  padding: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+}

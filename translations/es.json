@@ -679,6 +679,7 @@
     "commentedThisMeetup" : "comentado este meetup",
     "hasS" : "ha",
     "hasP" : "han",
-    "publishComment" : "Publicar Comentario"
+    "publishComment" : "Publicar Comentario",
+    "eventPhotos" : "Fotos del evento"
   }
 }

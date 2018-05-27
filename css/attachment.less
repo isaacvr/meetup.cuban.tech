@@ -1,0 +1,45 @@
+/**
+ * @author: Isaac Vega Rodriguez          <isaacvega1996@gmail.com>
+ */
+
+@background-color:  #2196f3;
+@background-color-dark: darken(@background-color, 10%);
+@background-color-light: lighten(@background-color, 20%);
+
+.attachment-container {
+
+  padding: 0px 2px;
+
+  .attachment {
+
+    height: 60px;
+    margin: 10px 0px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    border-radius: 2px;
+    background-color: @background-color-light;
+
+    .extension {
+      padding: 0;
+      height: 60px;
+      border-radius: 2px 10px 10px 2px;
+      border: 1px solid;
+      text-align: center;
+      font-size: 1.5em;
+      overflow: hidden;
+      padding-top: 0.5em;
+      background-color: @background-color-dark;
+      color: white;
+      font-weight: bold;
+    }
+
+    .name {
+      word-wrap: break-word;
+      padding: 3px;
+      height: 60px;
+      color: #444;
+    }
+
+  }
+
+}
