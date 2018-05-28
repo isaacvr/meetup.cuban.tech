@@ -7,6 +7,7 @@
 var express = require('express');
 var fs      = require('fs');
 var glob    = require('glob');
+var mime    = require('mime');
 
 var app = express();
 
@@ -89,19 +90,23 @@ app.get('/api/events/:id/photos', function(req, res) {
 
   var pref = BASE_DIR + '/event_photos/';
 
-  var models = glob.sync(pref + req.params.id + '/*.jpg');
+  var models = glob.sync(pref + req.params.id + '/*.*');
 
-  models = models.map(function(e) {
+  models = models
+    .filter(function(e) {
+      return /^image/i.test( mime.lookup(e) );
+    })
+    .map(function(e) {
 
-    var aux = e.substring(pref.length, e.length);
+      var aux = e.substring(pref.length, e.length);
+      aux = aux.split('/');
 
-    aux = aux.split('/');
+      return {
+        url : '/api/events/' + aux[0] + '/photo/' + aux[1],
+        mime : mime.lookup(e)
+      };
 
-    //  api events :id photo :photoName
-
-    return '/api/events/' + aux[0] + '/photo/' + aux[1];
-
-  });
+    });
 
   //console.log(models);
 
@@ -134,12 +139,74 @@ app.get('/api/events/:id/photo/:photoName', function(req, res) {
 
   } else {
 
-    console.log('No existe el fichero');
+    //console.log('No existe el fichero');
 
     return res.status(404).jsonp([]);
   }
 
   //var models = glob.sync(BASE_DIR + '/event_photos/' + req.params.id + '/*.jpg');
+
+});
+
+app.get('/api/events/:id/videos', function(req, res) {
+
+  //console.log(req.params.id);
+
+  var pref = BASE_DIR + '/event_videos/';
+
+  var models = glob.sync(pref + req.params.id + '/*.*');
+
+  models = models
+    .filter(function(e) {
+      return /^video/i.test( mime.lookup(e) );
+    })
+    .map(function(e) {
+
+      var aux = e.substring(pref.length, e.length);
+      aux = aux.split('/');
+
+      return {
+        url : '/api/events/' + aux[0] + '/video/' + aux[1],
+        mime : mime.lookup(e)
+      };
+
+    });
+
+  //console.log(models);
+
+  return res.status(200).jsonp(models);
+
+});
+
+app.get('/api/events/:id/video/:videoName', function(req, res) {
+
+  ///console.log(req.url);
+
+  var __path = decodeURI(req.url.toString()).split('/');
+
+  //console.log(__path);
+
+  __path = [
+    __path[3],
+    __path[5],
+  ].join('/');
+
+  var videoPath = BASE_DIR + '/event_videos/' + __path;
+
+  //console.log(photoPath);
+
+  if ( fs.existsSync( videoPath ) === true ) {
+
+    return res.status(200).sendFile(videoPath, {
+      root : __dirname
+    });
+
+  } else {
+
+    //console.log('No existe el fichero');
+
+    return res.status(404).jsonp([]);
+  }
 
 });
 
@@ -212,7 +279,7 @@ app.get('/api/events/:id/attachment/:name', function(req, res) {
 
   } else {
 
-    console.log('No existe el fichero', __path);
+    //console.log('No existe el fichero', __path);
 
     return res.status(404).jsonp([]);
   }
@@ -303,7 +370,7 @@ app.get('/api/photos', function(req, res) {
 
     if ( fs.existsSync(fileDir) === true ) {
 
-      console.log('FILE EXISTS');
+      //console.log('FILE EXISTS');
 
       return res.sendFile(fileDir, {
         root : __dirname

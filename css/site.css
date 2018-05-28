@@ -7942,3 +7942,11 @@ hr.dark {
   border-radius: 2px;
   cursor: pointer;
 }
+
+.video-container video {
+  border-radius: 2px;
+  padding: 0;
+  box-shadow: 6px 7px 5px rgba(0, 0, 0, 0.3);
+  border: 4px solid #5d5d5d;
+  margin: 10px 0px;
+}

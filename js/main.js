@@ -206,6 +206,30 @@ myApp
 
       };
 
+      $scope.getEventVideos = function getEventVideos(group) {
+
+        var __fetch = function(ev) {
+
+          $http
+            .get('/api/events/' + ev.id + '/videos/', {
+              params : {
+                "key" : MEETUP_API_KEY
+              }
+            })
+            .success(function(data) {
+              ev.videos = data;
+            })
+            .error(function(err) {
+            });
+
+        };
+
+        for (var i = 0; i < group.eventList.length; i += 1) {
+          __fetch( group.eventList[i] );
+        }
+
+      };
+
       $scope.getEventAgenda = function getEventAgenda(group) {
 
         var __fetch = function(ev) {
@@ -324,6 +348,7 @@ myApp
             $scope.getComments(eventGroup);
             $scope.getEventAgenda(eventGroup);
             $scope.getEventPhotos(eventGroup);
+            $scope.getEventVideos(eventGroup);
             $scope.getEventAttachments(eventGroup);
               /// $scope.getRatings(data.results[0]);
 

@@ -56,33 +56,29 @@
     </div>
   </div>
 
-  <div class="panel panel-default short-hidden" ng-show="event.attachments.length > 0">
-    <div class="panel-body">
-      <div class="attachment-container col-xs-4" ng-repeat="at in event.attachments">
-        <div class="attachment" extGroup="{{at.extGroup}}">
-          <div class="col-xs-4 extension" ng-bind="at.extension">
-          </div>
-          <a class="col-xs-8 name" href="{{at.url}}" download ng-bind="at.name">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="panel panel-default short-hidden" ng-show="event.photos.length > 0">
     <div class="panel-header text-center">
       <h1 ng-bind="$parent.general.eventPhotos"></h1>
     </div>
     <div class="panel-body">
       <div id="gallery_{{event.id}}" class="lightbox row">
-        <div ng-repeat="photo in event.photos track by $index" data-src="{{photo}}" class="img-preview col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-hide="!!event.showAllPhotos === false && $index >= 4">
+        <div ng-repeat="photo in event.photos track by $index" data-src="{{photo.url}}" class="img-preview col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-hide="!!event.showAllPhotos === false && $index >= 4">
           <div class="lightbox-item">
-            <img src="{{photo}}" alt="" class="col-xs-12">
+            <img src="{{photo.url}}" alt="" class="col-xs-12">
           </div>
         </div>
       </div>
       <div>
         <button class="btn btn-warning" ng-click="event.showAllPhotos = !event.showAllPhotos" ng-bind=" !!event.showAllPhotos?' - ':' + ' " ng-show="event.photos.length > 4"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default short-hidden" ng-show="event.videos.length > 0">
+    <div class="panel-body video-container">
+      <div ng-repeat="video in event.videos track by $index" class="col-xs-12">
+        <video src="{{video.url}}" controls class="col-xs-12">
+        </video>
       </div>
     </div>
   </div>
