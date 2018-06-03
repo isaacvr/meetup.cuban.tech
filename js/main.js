@@ -206,30 +206,6 @@ myApp
 
       };
 
-      $scope.getEventVideos = function getEventVideos(group) {
-
-        var __fetch = function(ev) {
-
-          $http
-            .get('/api/events/' + ev.id + '/videos/', {
-              params : {
-                "key" : MEETUP_API_KEY
-              }
-            })
-            .success(function(data) {
-              ev.videos = data;
-            })
-            .error(function(err) {
-            });
-
-        };
-
-        for (var i = 0; i < group.eventList.length; i += 1) {
-          __fetch( group.eventList[i] );
-        }
-
-      };
-
       $scope.getEventAgenda = function getEventAgenda(group) {
 
         var __fetch = function(ev) {
@@ -241,7 +217,50 @@ myApp
               }
             })
             .success(function(data) {
-              ev.agenda = data;
+
+              //console.log('AGENDA: ', data);
+
+              for (var i = 0; i < data.agenda.length; i += 1) {
+                if ( data.agenda[i].hasOwnProperty('preview') === true ) {
+                  if ( data.youtube === true ) {
+                    data.agenda[i].preview = 'https://youtu.be/' + data.agenda[i].preview;
+                  } else {
+                    data.agenda[i].preview = '/api/video/' + data.agenda[i].preview;
+                  }
+                }
+              }
+
+              console.log(data);
+
+              ev.agenda = data.agenda;
+              ev.youtube = !!data.youtube;
+
+              setTimeout(function() {
+                for (var i = 0; i < ev.agenda.length; i += 1) {
+                  if ( ev.agenda[i].hasOwnProperty('preview') === true ) {
+                    if ( ev.agenda[i].hasOwnProperty('id') === true ) {
+
+                      if ( $('#video-gallery-' + ev.agenda[i].id)[0] ) {
+                        if ( ev.youtube === true ) {
+                          $('#video-gallery-' + ev.agenda[i].id).hide();
+                        } else {
+                          $('#video-gallery-' + ev.agenda[i].id).lightGallery();
+                        }
+                      }
+
+                      if ( $('#video-gallery-youtube-' + ev.agenda[i].id)[0] ) {
+                        if ( ev.youtube === true ) {
+                          $('#video-gallery-youtube-' + ev.agenda[i].id).lightGallery();
+                        } else {
+                          $('#video-gallery-youtube-' + ev.agenda[i].id).hide();
+                        }
+                      }
+
+                    }
+                  }
+                }
+              }, 500);
+
             })
             .error(function(err) {
             });
@@ -348,7 +367,6 @@ myApp
             $scope.getComments(eventGroup);
             $scope.getEventAgenda(eventGroup);
             $scope.getEventPhotos(eventGroup);
-            $scope.getEventVideos(eventGroup);
             $scope.getEventAttachments(eventGroup);
               /// $scope.getRatings(data.results[0]);
 
@@ -1002,6 +1020,6 @@ function getQueryParameters() {
 
 }
 
-(function() {
+setTimeout(function() {
   Chart.defaults.global.legend.labels.boxWidth = 12;
-})();
+}, 500);

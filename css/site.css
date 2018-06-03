@@ -7520,9 +7520,28 @@ hr.dark {
   font-size: 1.1rem;
 }
 
+.event-agenda ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.event-agenda ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.event-agenda ul li:hover {
+  text-decoration: underline;
+  color: #620e0e;
+}
+
 .event-agenda div {
   padding: 2px 10px 2px 0px;
   background-color: #f0f2f2;
+  display: inline;
 }
 
 .event-agenda div span {

@@ -12,6 +12,7 @@ var mime    = require('mime');
 var app = express();
 
 var APP_PORT = 80;
+var IS_YOUTUBE = true;
 
 var BASE_DIR = './api.meetups.com';
 
@@ -178,24 +179,15 @@ app.get('/api/events/:id/videos', function(req, res) {
 
 });
 
-app.get('/api/events/:id/video/:videoName', function(req, res) {
+app.get('/api/video/:videoName', function(req, res) {
 
-  ///console.log(req.url);
+  var videoPath = BASE_DIR + '/event_videos/' + req.params.videoName;
 
-  var __path = decodeURI(req.url.toString()).split('/');
-
-  //console.log(__path);
-
-  __path = [
-    __path[3],
-    __path[5],
-  ].join('/');
-
-  var videoPath = BASE_DIR + '/event_videos/' + __path;
-
-  //console.log(photoPath);
+  console.log(videoPath);
 
   if ( fs.existsSync( videoPath ) === true ) {
+
+    //console.log('EXISTE EL VIDEO');
 
     return res.status(200).sendFile(videoPath, {
       root : __dirname
@@ -244,10 +236,13 @@ app.get('/api/events/:id/agenda', function(req, res) {
 
   var models = glob.sync(pref + req.params.id + '.json');
 
-  var result = [];
+  var result = {
+    agenda : [],
+    youtube : IS_YOUTUBE
+  };
 
   if ( models.length > 0 ) {
-    result = require(models[0]);
+    result.agenda = require(models[0]);
   }
 
   return res.status(200).jsonp(result);

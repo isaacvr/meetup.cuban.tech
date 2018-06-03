@@ -46,10 +46,29 @@
       <h3 class="text-center"> Agenda: </h3>
       <ul class="col-xs-12">
         <li class="event-agenda col-xs-6" ng-repeat="ag in event.agenda">
+          <div class="hidden" id="video-{{event.id}}-{{ag.id}}">
+            <video class="lg-video-object lg-html5" controls preload="none">
+              <source src="{{ag.preview}}">
+              {{ag.preview}}
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
           <div class="col-xs-12">
             <span class="col-xs-12 fa fa-bullhorn" ng-bind="ag.title"></span>
             <span class="col-xs-12 fa fa-clock-o" ng-bind="ag.time"></span>
             <span class="col-xs-12 fa fa-user-o" ng-bind="ag.name"></span>
+            <span class="col-xs-12 fa fa-caret-square-o-right" ng-show="!!ag.preview">
+              <ul id="video-gallery-{{ag.id}}">
+                <li data-html="#video-{{event.id}}-{{ag.id}}">
+                  Video
+                </li>
+              </ul>
+              <div id="video-gallery-youtube-{{ag.id}}">
+                <a ng-href="{{ag.preview}}">
+                  Video
+                </a>
+              </div>
+            </span>
           </div>
         </li>
       </ul>
@@ -70,15 +89,6 @@
       </div>
       <div>
         <button class="btn btn-warning" ng-click="event.showAllPhotos = !event.showAllPhotos" ng-bind=" !!event.showAllPhotos?' - ':' + ' " ng-show="event.photos.length > 4"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel panel-default short-hidden" ng-show="event.videos.length > 0">
-    <div class="panel-body video-container">
-      <div ng-repeat="video in event.videos track by $index" class="col-xs-12">
-        <video src="{{video.url}}" controls class="col-xs-12">
-        </video>
       </div>
     </div>
   </div>
