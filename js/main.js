@@ -379,7 +379,7 @@ myApp
 
       };
 
-      $scope.getEvents('past');
+      $scope.getEvents('upcoming');
 
       $scope.getMembers = function getMembers() {
 

@@ -7585,6 +7585,10 @@ hr.dark {
   color: #0277bd;
 }
 
+.contact .fa {
+  width: 15px;
+}
+
 .pagination {
   width: 100%;
   border-radius: 0px;
