@@ -1,0 +1,111 @@
+{
+  "items": [
+    {
+      "type": "page",
+      "title": "Welcome to the Cuban Tech Form",
+      "subtitle": "We want to know more about your preferences.",
+      "items": [
+        {
+          "type": "input",
+          "title": "Your name",
+          "name": "name",
+          "placeholder": "Type your name here..."
+        },
+        {
+          "type": "radio",
+          "title": "What province do you currently live in?",
+          "subtitle": "If you don not live in Cuba, please specify Province or State",
+          "name": "province",
+          "items": [
+            "Pinar del Rio",
+            "Artemisa",
+            "La Habana",
+            "Mayabeque",
+            "Isla de la Juventud",
+            "Matanzas",
+            "Cienfuegos",
+            "Villa Clara",
+            "Sancti Spiritus",
+            "Ciego de Avila",
+            "Camagüey",
+            "Las Tunas",
+            "Holguín",
+            "Granma",
+            "Santiago de Cuba",
+            "Guantánamo"
+          ]
+        },
+        {
+          "type": "checkbox",
+          "title": "What certificates have you earned (if any)?",
+          "subtitle": "If you passed certification exams, please let us know wich ones",
+          "name": "certificates",
+          "items": [
+            "Escuela de idioma",
+            "Algoritmos interespaciales",
+            "Diseño de formas de ondas",
+            "Comunicación con los calamares",
+            "Exploracion submarina"
+          ]
+        },
+        {
+          "type": "radioMatrix",
+          "title": "What is your English level?",
+          "subtitle": "Almost all our projects are international, bla bla bla.",
+          "name": "englishLevel",
+          "rows": [
+            {
+              "name": "reading",
+              "title": "Reading"
+            },
+            {
+              "name": "speaking",
+              "title": "Speaking"
+            },
+            {
+              "name": "listening",
+              "title": "Listening"
+            },
+            {
+              "name": "writing_translating",
+              "title": "Writing / Translating"
+            }
+          ],
+          "cols": [
+            {
+              "name": "fluent",
+              "title": "Fluent"
+            },
+            {
+              "name": "good",
+              "title": "Good"
+            },
+            {
+              "name": "medium",
+              "title": "Medium"
+            },
+            {
+              "name": "none",
+              "title": "Yo no entiendo"
+            }
+          ]
+        },
+        {
+          "type": "input",
+          "title": "Direccion de correo electronico",
+          "name": "email",
+          "validations": [
+            {
+              "type": "text",
+              "list": [
+                "email"
+              ]
+            }
+          ],
+          "placeholder": "Email here...",
+          "onError" : "Please type a valid email."
+        }
+      ]
+    }
+  ]
+}

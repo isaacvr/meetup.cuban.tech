@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cubantech" ng-controller="cubantechController">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta ng-repeat="meta in head.metadata" name="{{meta.name}}" content="{{meta.content}}">
+    <link rel="icon" href="img/favicon.ico">
+
+    <title ng-bind="head.title"></title>
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/forms.min.css">
+    <link rel="stylesheet" href="css/jquery.orgchart.min.css">
+    <link rel="stylesheet" href="css/lightgallery.min.css">
+    <link rel="stylesheet" href="css/app.min.2.css">
+    <link rel="stylesheet/less" type="text/css" href="css/attachment.less">
+    <link href="css/site.css" rel="stylesheet">
+
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="css/carousel.css" rel="stylesheet" />
+    <link href="css/flags.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">&nbsp;</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav text-center navbar-right">
+            <li ng-repeat="navItem in navBar" class="">
+              <p class="hidden" ng-bind="processNavItem(navItem)"></p>
+              <a href="{{navItem.href}}" class="text-uppercase" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="nav-item-main" ng-class="{ 'target-item': navItem.regexp.test(location.pathname) }" ng-bind="navItem.label"></span>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle text-uppercase nav-item-main" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="flag flag-{{lang}}"></span> <span class="visible-lg-inline-block" ng-bind="general.language"></span><span ng-bind="'( ' + lang + ' )'" class="highlighted visible-lg-inline-block"></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li ng-repeat="lng in langList" ng-click="useLanguage(lng)"><a href="#"><span class="flag flag-{{lng}}"></span> {{langMap[lng]}}</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12" id="myForm">
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="container-fluid">
+        <div id="footer-links" class="container text-center">
+          <div class="row">
+            <div class="col-xs-12 col-lg-6 text-left">
+              <h4 class="text-uppercase text-info" style="letter-spacing: 3px; font-weight: bold;"><span class="fa fa-desktop"></span>cuban.tech</h4>
+              <div class="row">
+                <a class="text-info contact col-xs-12 col-sm-6" ng-repeat="link in footer.contacts" href="{{link.href}}"><span class="fa fa-{{link.type}}"></span>{{link.content}}</a>
+              </div>
+            </div>
+            <div class="col-lg-6 visible-lg">
+              <img src="img/9.png" alt="">
+              <div ng-repeat="item in footer.slogan" class="info text-uppercase text-info col-xs-4" ng-bind="item"></div>
+            </div>
+          </div>
+        </div>
+        <div id="footer-copy" class="row bg-primary">
+          <div class="col-md-12">
+            <hr class="hr-little"/>
+            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a></p>
+            <p class="text-center"> &nbsp; &nbsp; &copy; {{thisYear}} {{signature}}</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+    <script type="text/javascript" src="js/forms.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/chart.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery.orgchart.min.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/less.min.js"></script>
+    <script type="text/javascript" src="js/lightgallery-all.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/formHandler.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

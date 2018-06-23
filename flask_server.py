@@ -5,32 +5,14 @@
 import os
 import glob
 from flask import Flask, request, send_from_directory, json
+from flask.ext.pymongo import PyMongo
 
-APP_PORT = 80
 IS_YOUTUBE = False
 
 BASE_DIR = './api.meetups.com';
 
 app = Flask(__name__)
-
-ROUTES = [
-  {
-    "url" : '/',
-    "file" : 'index.html'
-  },
-  {
-    "url" : '/events',
-    "file" : 'events.html'
-  },
-  {
-    "url" : '/aboutUs',
-    "file" : 'aboutUs.html'
-  },
-  {
-    "url" : '/contactUs',
-    "file" : 'contactUs.html'
-  }
-]
+app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/test'
 
 # Basic requests handlers
 
@@ -38,49 +20,57 @@ ROUTES = [
 def __jsFiles(path):
   return send_from_directory('js', path);
 
-@app.route('/css/<path:path>')
+@app.route('/css/<path:path>', methods=['GET'])
 def __cssFiles(path):
   return send_from_directory('css', path);
 
-@app.route('/templates/<path:path>')
+@app.route('/templates/<path:path>', methods=['GET'])
 def __templateFiles(path):
   return send_from_directory('templates', path);
 
-@app.route('/fonts/<path:path>')
+@app.route('/fonts/<path:path>', methods=['GET'])
 def __fontsFiles(path):
   return send_from_directory('fonts', path);
 
-@app.route('/img/<path:path>')
+@app.route('/img/<path:path>', methods=['GET'])
 def __imgFiles(path):
   return send_from_directory('img', path);
 
-@app.route('/translations/<path:path>')
+@app.route('/translations/<path:path>', methods=['GET'])
 def __translationsFiles(path):
   return send_from_directory('translations', path);
 
+@app.route('/forms/<path:path>', methods=['GET'])
+def __formFiles(path):
+  return send_from_directory('forms', path);
+
 # Routes
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-  return send_from_directory('', 'index.html');
+  return send_from_directory('', 'index.html')
 
-@app.route('/events')
+@app.route('/events', methods=['GET'])
 def _events():
   return send_from_directory('', 'events.html')
 
-@app.route('/aboutUs')
+@app.route('/aboutUs', methods=['GET'])
 def _aboutUs():
   return send_from_directory('', 'aboutUs.html')
 
-@app.route('/contactUs')
+@app.route('/contactUs', methods=['GET'])
 def _contactUs():
   return send_from_directory('', 'contactUs.html')
+
+@app.route('/userInfo', methods=['GET'])
+def _userInfo():
+  return send_from_directory('', 'form.html')
 
 # API
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/events')
+@app.route('/api/events', methods=['GET'])
 def _eventsHandler():
 
   options = [
@@ -128,7 +118,7 @@ def _filterImage(img):
     return False
 
 
-@app.route('/api/events/<id>/photos')
+@app.route('/api/events/<id>/photos', methods=['GET'])
 def __eventPhotosHandler(id):
 
   print id
@@ -162,7 +152,7 @@ def __eventPhotosHandler(id):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/events/<id>/photo/<photoName>')
+@app.route('/api/events/<id>/photo/<photoName>', methods=['GET'])
 def _eventPhotoByNameHandler(id, photoName):
 
   photoPath = BASE_DIR + '/event_photos/' + id;
@@ -179,7 +169,7 @@ def _eventPhotoByNameHandler(id, photoName):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/video/<videoName>')
+@app.route('/api/video/<videoName>', methods=['GET'])
 def _videoByNameHandler(videoName):
 
   pref = BASE_DIR + '/event_videos/'
@@ -203,7 +193,7 @@ def _videoByNameHandler(videoName):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/events/<id>/attachments')
+@app.route('/api/events/<id>/attachments', methods=['GET'])
 def _eventsAttachmentsHandler(id):
 
   pref = BASE_DIR + '/event_attachments/'
@@ -225,7 +215,7 @@ def _eventsAttachmentsHandler(id):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/events/<id>/agenda')
+@app.route('/api/events/<id>/agenda', methods=['GET'])
 def _eventsAgendaHandler(id):
 
   pref = BASE_DIR + '/event_agenda/'
@@ -245,7 +235,7 @@ def _eventsAgendaHandler(id):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/events/<id>/attachment/<name>')
+@app.route('/api/events/<id>/attachment/<name>', methods=['GET'])
 def _eventsAttachmentByNameHandler(id, name):
 
   photoPath = BASE_DIR + '/event_attachments/' + id + '/' + name
@@ -258,7 +248,7 @@ def _eventsAttachmentByNameHandler(id, name):
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/members')
+@app.route('/api/members', methods=['GET'])
 def _membersHandler():
 
   try:
@@ -271,7 +261,7 @@ def _membersHandler():
 
 #---------------------------------------------------------------------------------
 
-@app.route('/api/comments')
+@app.route('/api/comments', methods=['GET'])
 def _commentsHandler():
 
   for arg, val in request.args.iteritems():
@@ -295,9 +285,10 @@ def _commentsHandler():
   response.status_code = 400;
   return response
 
+
 #---------------------------------------------------------------------------------
 
-@app.route('/api/photos')
+@app.route('/api/photos', methods=['GET'])
 def _photosHandler():
 
   for arg, val in request.args.iteritems():
@@ -316,6 +307,23 @@ def _photosHandler():
         return send_from_directory('./img/', '8.png')
 
   return send_from_directory('./img/', '8.png')
+
+
+#---------------------------------------------------------------------------------
+
+@app.route('/submitForm', methods=['POST'])
+def _submitFormHandler():
+
+  mongo = PyMongo(app)
+
+  if 'data' in request.form:
+    data = json.loads( request.form['data'] )
+    mongo.db.forms.insert(data)
+
+  return ''
+
+
+#---------------------------------------------------------------------------------
 
 # Run the server
 

@@ -16,7 +16,7 @@ var IS_YOUTUBE = false;
 
 var BASE_DIR = './api.meetups.com';
 
-var ROOT = __dirname + '/static/';
+var ROOT = __dirname;
 
 app.use(express.static(ROOT));
 
@@ -36,6 +36,10 @@ var ROUTES = [
   {
     url : '/contactUs',
     file : 'contactUs.html'
+  },
+  {
+    url : '/userInfo',
+    file : 'form.html'
   },
 ];
 
