@@ -16,7 +16,9 @@ var IS_YOUTUBE = false;
 
 var BASE_DIR = './api.meetups.com';
 
-app.use(express.static(__dirname));
+var ROOT = __dirname + '/static/';
+
+app.use(express.static(ROOT));
 
 var ROUTES = [
   {
@@ -42,7 +44,7 @@ for (var i = 0; i < ROUTES.length; i += 1) {
     var rt = ROUTES[i];
     app.get(rt.url, function(req, res) {
       res.sendFile(rt.file, {
-        root : __dirname
+        root : ROOT
       });
     });
   })();
@@ -135,7 +137,7 @@ app.get('/api/events/:id/photo/:photoName', function(req, res) {
   if ( fs.existsSync( photoPath ) === true ) {
 
     return res.status(200).sendFile(photoPath, {
-      root : __dirname
+      root : ROOT
     });
 
   } else {
@@ -173,7 +175,7 @@ app.get('/api/video/:videoName', function(req, res) {
     //console.log('EXISTE EL VIDEO');
 
     return res.status(200).sendFile(models[0], {
-      root : __dirname
+      root : ROOT
     });
 
   } else {
@@ -252,7 +254,7 @@ app.get('/api/events/:id/attachment/:name', function(req, res) {
   if ( fs.existsSync( photoPath ) === true ) {
 
     return res.status(200).sendFile(photoPath, {
-      root : __dirname
+      root : ROOT
     });
 
   } else {
@@ -351,20 +353,20 @@ app.get('/api/photos', function(req, res) {
       //console.log('FILE EXISTS');
 
       return res.sendFile(fileDir, {
-        root : __dirname
+        root : ROOT
       });
 
     } else {
 
       return res.sendFile('./img/8.png', {
-        root : __dirname
+        root : ROOT
       });
 
     }
 
   } else {
     return res.sendFile('./img/8.png', {
-      root : __dirname
+      root : ROOT
     });
   }
 

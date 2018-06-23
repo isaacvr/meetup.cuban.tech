@@ -15,7 +15,7 @@ myApp
     '$sce',
     function($scope, $http, $window, $sce) {
 
-      var MEETUP_API_KEY = "18714117384a2a953663a721a636238";
+      //var MEETUP_API_KEY = "18714117384a2a953663a721a636238";
 
       var ROUTE = 'translations/';
 
@@ -86,7 +86,7 @@ myApp
             .get('/api/comments', {
               params : {
                 "event_id" : ev.id,
-                "key" : MEETUP_API_KEY
+                //"key" : MEETUP_API_KEY
               }
             })
             .success(function(data) {
@@ -131,12 +131,14 @@ myApp
         var __fetch = function(ev) {
 
           $http
-            .get('/api/events/' + ev.id + '/attachments/', {
+            .get('/api/events/' + ev.id + '/attachments', {
               params : {
-                "key" : MEETUP_API_KEY
+                //"key" : MEETUP_API_KEY
               }
             })
             .success(function(data) {
+
+              //console.log(data);
 
               ev.attachments = [];
 
@@ -158,7 +160,7 @@ myApp
 
             })
             .error(function(err) {
-              //console.log('getComments ERROR: ', err);
+              //console.log('getAttachments ERROR: ', err, );
             });
 
         };
@@ -174,9 +176,9 @@ myApp
         var __fetch = function(ev) {
 
           $http
-            .get('/api/events/' + ev.id + '/photos/', {
+            .get('/api/events/' + ev.id + '/photos', {
               params : {
-                "key" : MEETUP_API_KEY
+                //"key" : MEETUP_API_KEY
               }
             })
             .success(function(data) {
@@ -211,9 +213,9 @@ myApp
         var __fetch = function(ev) {
 
           $http
-            .get('/api/events/' + ev.id + '/agenda/', {
+            .get('/api/events/' + ev.id + '/agenda', {
               params : {
-                "key" : MEETUP_API_KEY
+                //"key" : MEETUP_API_KEY
               }
             })
             .success(function(data) {
@@ -230,7 +232,7 @@ myApp
                 }
               }
 
-              console.log(data);
+              //console.log(data);
 
               ev.agenda = data.agenda;
               ev.youtube = !!data.youtube;
@@ -278,7 +280,7 @@ myApp
         $http
           .get('http://api.meetup.com/2/event_ratings', {
             "event_id" : event.id,
-            "key" : MEETUP_API_KEY
+            //"key" : MEETUP_API_KEY
           })
           .success(function(data) {
 
@@ -298,7 +300,7 @@ myApp
             params : {
               "group_urlname" : "cubantech",
               "status" : status,
-              "key" : MEETUP_API_KEY
+              //"key" : MEETUP_API_KEY
             }
           })
           .success(function(data) {
@@ -333,6 +335,8 @@ myApp
               groupName : status.toUpperCase() + ' EVENTS',
               eventList : data.results
             };
+
+            //console.log(eventGroup);
 
             $scope.eventGroups.push(eventGroup);
 
@@ -379,7 +383,7 @@ myApp
 
       };
 
-      $scope.getEvents('upcoming');
+      $scope.getEvents('past');
 
       $scope.getMembers = function getMembers() {
 

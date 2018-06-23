@@ -2,3 +2,4 @@ api.meetups.com/
 api.meetups.com_docker/
 node_modules/
 api.meetups.com_blockstack/
+venv/
