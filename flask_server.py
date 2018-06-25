@@ -12,7 +12,7 @@ IS_YOUTUBE = False
 BASE_DIR = './api.meetups.com';
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://127.0.0.1:27017/test'
+app.config['MONGO_URI'] = open('Config/database.txt', 'r').read()
 
 # Basic requests handlers
 
@@ -121,7 +121,7 @@ def _filterImage(img):
 @app.route('/api/events/<id>/photos', methods=['GET'])
 def __eventPhotosHandler(id):
 
-  print id
+  # print id
 
   pref = BASE_DIR + '/event_photos/'
 
@@ -132,11 +132,11 @@ def __eventPhotosHandler(id):
   res = []
 
   for md in models:
-    print md
+    # print md
 
     aux = md[ len(pref) : ]
 
-    print aux
+    # print aux
 
     aux = aux.split('/')
 
@@ -145,7 +145,7 @@ def __eventPhotosHandler(id):
       'mime' : 'image/jpeg'
     });
 
-  print res
+  # print res
 
   return json.jsonify(res)
 
@@ -157,8 +157,8 @@ def _eventPhotoByNameHandler(id, photoName):
 
   photoPath = BASE_DIR + '/event_photos/' + id;
 
-  print photoPath
-  print os.path.isfile( photoPath + '/' + photoName )
+  # print photoPath
+  # print os.path.isfile( photoPath + '/' + photoName )
 
   if os.path.isfile( photoPath + '/' + photoName ):
     return send_from_directory(photoPath, photoName)
